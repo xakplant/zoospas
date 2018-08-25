@@ -29,6 +29,7 @@ define( 'ZOOSPAS_DELETE_LIMIT', 100000 );
 register_activation_hook( __FILE__, array( 'Zoospas', 'plugin_activation' ) );
 register_deactivation_hook( __FILE__, array( 'Zoospas', 'plugin_deactivation' ) );
 
+
 require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/functions.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/events.php' );
 require_once( ZOOSPAS_PLUGIN_DIR . '/classes/Zoospas.php' );

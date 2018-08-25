@@ -22,6 +22,7 @@ class Zoospas
     public static function init(){
 
         add_action( 'admin_enqueue_scripts', 'zoospas_register_css_js' );
+        require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/functions.php' );
 
     }
 
