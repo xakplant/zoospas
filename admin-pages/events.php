@@ -15,40 +15,7 @@
  */
 add_action('zs_admin_panel', 'zs_admin_panel', 10);
 add_action('zs_pet_list', 'zs_pet_list', 10);
-add_action( 'zs_admin_panel', 'example_table_page_load', 20 );
-add_action( 'zs_admin_panel', 'expl', 30 );
 
-
-add_filter( 'set-screen-option', function( $status, $option, $value ){
-    return ( $option == 'lisense_table_per_page' ) ? (int) $value : $status;
-}, 10, 3 );
-
-
-function example_table_page_load(){
-
-    require_once( ZOOSPAS_PLUGIN_DIR . 'Example_List_Table.php' );
-
-
-    // создаем экземпляр и сохраним его дальше выведем
-    $GLOBALS['Example_List_Table'] = new Example_List_Table();
-}
-function expl() {
-
-    echo '<form action="" method="POST">';
-    $GLOBALS['Example_List_Table']->display();
-    echo '</form>';
-
-
-}
-function zs_admin_panel(){
-    ?>
-
-        <p>Контент для Административной панели</p>
-
-    <?php
-
-
-}
 function zs_pet_list(){
     ?>
 
@@ -57,3 +24,26 @@ function zs_pet_list(){
     <?php
 }
 
+
+function zs_admin_panel(){
+    
+    echo '<h2>Настройки</h2>';
+    
+    ?>
+    
+    <form name="zs_options" method="post">
+        <label>Оснавная категория по которой плагин будет понимать что запись о животном</label>
+        <input type="text" name="zs_pr_category" value="pet"/><br>
+        <label>Категория с типом животного (например, кошки или cat</label>
+        <input type="text" name="zs_pr_second_0" value="cat"/><br>
+        <label>Категория с типом животного (например, собаки или dog</label>
+        <input type="text" name="zs_pr_second_1" value="dog"/><br>
+        <label>Категория с типом животного (например, прочие, прички и т.д.t</label>
+        <input type="text" name="zs_pr_second_2" value="other"/><br>
+        <button type="submit">сохранить настройки</button>
+    </form>
+    
+    
+    <?php
+    
+}

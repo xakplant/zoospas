@@ -102,7 +102,16 @@ function zs_volonter_reg(){
     
     echo '<hr>';
     
-    echo 'Dblbn';
+    $message = $name . ' зарегистрировался на сайте Zoospas';
+    $message .= ' его телефон' . $telephoen;
+    $message .= ' его почта ' . $email;
+    $message .= ' примечание "' . $other . '"';
     
+    
+    
+    $call = wp_mail( 'zoospas27@mail.ru', 'Новая регистрация', $message, $headers, $attachments );
+    
+    echo $call;
+
     wp_die();
 }

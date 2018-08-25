@@ -92,8 +92,6 @@ class Zoospas
 
     public static function  admin_panel(){
 
-        wp_enqueue_scripts('zoospas_style');
-
         echo '<h2>' . __( 'Admin Panel', 'zoospas' ) . '</h2>';
 
         do_action('zs_general_content_of_pages_before_content');
