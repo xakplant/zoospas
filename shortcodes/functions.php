@@ -10,8 +10,8 @@ function zs_print_user_buttons(){
 
         <div class="zs_button_block">
 
-            <a href="/petlist">Приютить животное</a>
-            <a href="/volontier">Предложить попощь</a>
+            <a class="zs-btn zs-btn-default" href="/petlist">Приютить животное</a>
+            <a class="zs-btn zs-btn-default" href="/volontier">Предложить попощь</a>
 
         </div>
 
@@ -109,9 +109,32 @@ function zs_volonter_reg(){
     
     
     
-    $call = wp_mail( 'zoospas27@mail.ru', 'Новая регистрация', $message, $headers, $attachments );
+    $call = wp_mail( 'cherr_guw@mail.ru', 'Новая регистрация', $message, $headers, $attachments );
     
     echo $call;
 
     wp_die();
 }
+
+
+
+
+
+
+function zs_after_post_form(){
+    
+    ?>
+    <script id="bx24_form_button" data-skip-moving="true">
+        (function(w,d,u,b){w['Bitrix24FormObject']=b;w[b] = w[b] || function(){arguments[0].ref=u;
+                (w[b].forms=w[b].forms||[]).push(arguments[0])};
+                if(w[b]['forms']) return;
+                var s=d.createElement('script');s.async=1;s.src=u+'?'+(1*new Date());
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://b24-pbobc0.bitrix24.ru/bitrix/js/crm/form_loader.js','b24form');
+
+        b24form({"id":"8","lang":"ru","sec":"6ql2yw","type":"button","click":""});
+</script><button class="b24-web-form-popup-btn-8">Забрать животное</button>
+    
+    <?php
+}
+add_shortcode('zs_after_post_form', 'zs_after_post_form', 10);

@@ -32,6 +32,9 @@ function zs_admin_panel(){
     ?>
     
     <form name="zs_options" method="post">
+        <label>Почта для уведомлений</label>
+        <input type="email" name="zs_email" value="zoospas27@mail.ru"/><br>
+        <br><br>
         <label>Оснавная категория по которой плагин будет понимать что запись о животном</label>
         <input type="text" name="zs_pr_category" value="pet"/><br>
         <label>Категория с типом животного (например, кошки или cat</label>
@@ -47,3 +50,21 @@ function zs_admin_panel(){
     <?php
     
 }
+
+
+add_action('wp_footer', 'zs_get_bitrix_open_line', 100);
+function zs_get_bitrix_open_line(){
+    ?>
+    
+    <script data-skip-moving="true">
+        (function(w,d,u){
+                var s=d.createElement('script');s.async=1;s.src=u+'?'+(Date.now()/60000|0);
+                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+        })(window,document,'https://cdn.bitrix24.ru/b7941911/crm/site_button/loader_4_jxb0l8.js');
+</script>
+    
+    <?php 
+}
+
+
+
