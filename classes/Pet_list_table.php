@@ -92,49 +92,64 @@ class Pet_list_table extends WP_List_Table {
             'ID'        => 1,
             'title'     => '300',
             'rating'    => 'R',
-            'director'  => 'Zach Snyder'
+            'director'  => 'Zach Snyder',
+            'thumb' => 'sadd'
         ),
         array(
             'ID'        => 2,
             'title'     => 'Eyes Wide Shut',
             'rating'    => 'R',
             'director'  => 'Stanley Kubrick'
+        ,
+            'thumb' => 'sadd'
         ),
         array(
             'ID'        => 3,
             'title'     => 'Moulin Rouge!',
             'rating'    => 'PG-13',
             'director'  => 'Baz Luhrman'
+        ,
+            'thumb' => 'sadd'
         ),
         array(
             'ID'        => 4,
             'title'     => 'Snow White',
             'rating'    => 'G',
             'director'  => 'Walt Disney'
+        ,
+            'thumb' => 'sadd'
         ),
         array(
             'ID'        => 5,
             'title'     => 'Super 8',
             'rating'    => 'PG-13',
             'director'  => 'JJ Abrams'
+        ,
+            'thumb' => 'sadd'
         ),
         array(
             'ID'        => 6,
             'title'     => 'The Fountain',
             'rating'    => 'PG-13',
             'director'  => 'Darren Aronofsky'
+        ,
+            'thumb' => 'sadd'
         ),
         array(
             'ID'        => 7,
             'title'     => 'Watchmen',
             'rating'    => 'R',
             'director'  => 'Zach Snyder'
+        ,
+            'thumb' => 'sadd'
         ),
         array(
             'ID'        => 8,
             'title'     => '2001',
             'rating'    => 'G',
             'director'  => 'Stanley Kubrick'
+        ,
+            'thumb' => 'sadd'
         ),
     );
 
@@ -181,6 +196,7 @@ class Pet_list_table extends WP_List_Table {
         switch($column_name){
             case 'rating':
             case 'director':
+            case 'thumb':
                 return $item[$column_name];
             default:
                 return print_r($item,true); //Show the whole array for troubleshooting purposes
@@ -208,8 +224,8 @@ class Pet_list_table extends WP_List_Table {
 
         //Build row actions
         $actions = array(
-            'edit'      => sprintf('<a href="?page=%s&action=%s&movie=%s">Edit</a>',$_REQUEST['page'],'edit',$item['ID']),
-            'delete'    => sprintf('<a href="?page=%s&action=%s&movie=%s">Delete</a>',$_REQUEST['page'],'delete',$item['ID']),
+            'edit'      => sprintf('<a href="?page=%s&action=%s&movie=%s">'. __('Edit', 'zoospas') .'</a>',$_REQUEST['page'],'edit',$item['ID']),
+            'delete'    => sprintf('<a href="?page=%s&action=%s&movie=%s">'. __('Delete', 'zoospas') .'</a>',$_REQUEST['page'],'delete',$item['ID']),
         );
 
         //Return the title contents
@@ -257,7 +273,8 @@ class Pet_list_table extends WP_List_Table {
             'cb'        => '<input type="checkbox" />', //Render a checkbox instead of text
             'title'     => 'Title',
             'rating'    => 'Rating',
-            'director'  => 'Director'
+            'director'  => 'Director',
+            'thumb'     => 'Thumb'
         );
         return $columns;
     }
@@ -281,7 +298,9 @@ class Pet_list_table extends WP_List_Table {
         $sortable_columns = array(
             'title'     => array('title',false),     //true means it's already sorted
             'rating'    => array('rating',false),
-            'director'  => array('director',false)
+            'director'  => array('director',false),
+            'thumb'     => array('thumb',false),
+
         );
         return $sortable_columns;
     }

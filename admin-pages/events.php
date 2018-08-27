@@ -36,11 +36,11 @@ function zs_pet_list(){
 
 
 function zs_admin_panel(){
-    
+
     echo '<h2>Настройки</h2>';
-    
+
     ?>
-    
+
     <form name="zs_options" method="post">
         <label>Почта для уведомлений</label>
         <input type="email" name="zs_email" value="zoospas27@mail.ru"/><br>
@@ -55,26 +55,12 @@ function zs_admin_panel(){
         <input type="text" name="zs_pr_second_2" value="other"/><br>
         <button type="submit">сохранить настройки</button>
     </form>
-    
-    
+
+
     <?php
-    
+
 }
 
-
-add_action('wp_footer', 'zs_get_bitrix_open_line', 100);
-function zs_get_bitrix_open_line(){
-    ?>
-    
-    <script data-skip-moving="true">
-        (function(w,d,u){
-                var s=d.createElement('script');s.async=1;s.src=u+'?'+(Date.now()/60000|0);
-                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
-        })(window,document,'https://cdn.bitrix24.ru/b7941911/crm/site_button/loader_4_jxb0l8.js');
-</script>
-    
-    <?php 
-}
 
 
 
