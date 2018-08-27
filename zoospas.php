@@ -34,7 +34,7 @@ require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/functions.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/events.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/assets/functions.php' );
 require_once( ZOOSPAS_PLUGIN_DIR . '/classes/Zoospas.php' );
-
+require_once( ZOOSPAS_PLUGIN_DIR . '/classes/Pet_list_table.php' );
 
 add_action( 'init', array( 'Zoospas', 'init' ) );
 

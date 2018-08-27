@@ -29,10 +29,7 @@ class Zoospas
 
     public static function init(){
 
-        add_action( 'admin_enqueue_scripts', 'zoospas_register_css_js' );
         require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/functions.php' );
-
-
 
     }
 
@@ -155,11 +152,11 @@ class Zoospas
 
     public static function menu_item(){
 
-            add_menu_page( __( 'Zoospas', 'zoospas' ), __( 'Zoospas', 'zoospas' ), 'manage_options', 'zs_admin', array( __CLASS__, 'admin_panel' ));
+        add_menu_page( __( 'Zoospas', 'zoospas' ), __( 'Zoospas', 'zoospas' ), 'manage_options', 'zs_admin', array( __CLASS__, 'admin_panel' ));
 
-            add_submenu_page( 'zs_admin', __( 'Admin Panel', 'zoospas' ) , __( 'Admin Panel', 'zoospas' ) ,   'manage_options', 'zs_admin', array( __CLASS__, 'admin_panel' ));
+        add_submenu_page( 'zs_admin', __( 'Admin Panel', 'zoospas' ) , __( 'Admin Panel', 'zoospas' ) ,   'manage_options', 'zs_admin', array( __CLASS__, 'admin_panel' ));
 
-            add_submenu_page( 'zs_admin', __( 'Pet list', 'zoospas' ), __( 'Pet list', 'zoospas' ),  'manage_options', 'zs_pet_list', array( __CLASS__, 'pet_list' ));
+        add_submenu_page( 'zs_admin', __( 'Pet list', 'zoospas' ), __( 'Pet list', 'zoospas' ),  'manage_options', 'zs_pet_list', array( __CLASS__, 'pet_list' ));
 
     }
 
@@ -167,9 +164,6 @@ class Zoospas
 
 
         echo '<h2>' . __( 'Admin Panel', 'zoospas' ) . '</h2>';
-
-
-
 
 
         do_action('zs_general_content_of_pages_before_content');
@@ -188,11 +182,11 @@ class Zoospas
 
         echo '<h2>' . __( 'Pet list', 'zoospas' ) . '</h2>';
 
-        $screen = get_current_screen();
+        /*$screen = get_current_screen();
 
         echo '<pre>';
         print_r($screen);
-        echo '</pre>';
+        echo '</pre>';*/
 
 
         do_action('zs_general_content_of_pages_before_content');

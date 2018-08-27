@@ -17,9 +17,19 @@ add_action('zs_admin_panel', 'zs_admin_panel', 10);
 add_action('zs_pet_list', 'zs_pet_list', 10);
 
 function zs_pet_list(){
+    $testListTable = new Pet_list_table();  //
+    $testListTable->prepare_items();
+
     ?>
 
-        <p>Контент для Списка животных</p>
+    <form id="movies-filter" method="get">
+        <!-- For plugins, we also need to ensure that the form posts back to our current page -->
+        <input type="hidden" name="page" value="<?php echo $_REQUEST['page'] ?>" />
+        <!-- Now we can render the completed list table -->
+        <?php $testListTable->display() ?>
+    </form>
+
+
 
     <?php
 }
