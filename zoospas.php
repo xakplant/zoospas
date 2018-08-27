@@ -39,5 +39,6 @@ add_action( 'init', array( 'Zoospas', 'init' ) );
 
 register_activation_hook( __FILE__, array( 'Zoospas', 'plugin_activation' ) );
 register_deactivation_hook( __FILE__, array( 'Zoospas', 'plugin_deactivation' ) );
+register_uninstall_hook( __FILE__, array( 'Zoospas', 'plugin_uninstall' ));
 
 add_action('admin_menu', array( 'Zoospas', 'menu_item' ));
