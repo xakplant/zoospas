@@ -94,6 +94,16 @@ class Zoospas
 
     public static function plugin_deactivation(){
 
+        global $wpdb;
+        
+        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+        $table_activists_name = $wpdb->prefix . "activists";
+
+
+        $sql = 'DROP TABLE  '. $table_activists_name;
+
+        dbDelta( $sql );
 
     }
 
