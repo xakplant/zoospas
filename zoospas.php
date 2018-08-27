@@ -32,6 +32,7 @@ register_deactivation_hook( __FILE__, array( 'Zoospas', 'plugin_deactivation' ) 
 
 require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/functions.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/events.php' );
+require_once ( ZOOSPAS_PLUGIN_DIR . '/assets/functions.php' );
 require_once( ZOOSPAS_PLUGIN_DIR . '/classes/Zoospas.php' );
 
 
