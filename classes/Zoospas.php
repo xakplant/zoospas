@@ -48,6 +48,8 @@ class Zoospas
 
 
 
+
+
 /*
         CREATE TABLE IF NOT EXISTS animal (
                     id int NOT NULL AUTO_INCREMENT,
@@ -94,16 +96,10 @@ class Zoospas
 
     public static function plugin_deactivation(){
 
-        global $wpdb;
-        
-        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-
-        $table_activists_name = $wpdb->prefix . "activists";
 
 
-        $sql = 'DROP TABLE  '. $table_activists_name;
 
-        dbDelta( $sql );
+
 
     }
 
@@ -112,17 +108,19 @@ class Zoospas
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate();
-        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+
 
         $table_activists_name = $wpdb->prefix . "activists";
 
 
-        $sql = 'DROP TABLE '. $table_activists_name .'' . $charset_collate;
+        $sql = 'DROP TABLE '. $table_activists_name;
 
-        dbDelta( $sql );
-
+        $wpdb->query($sql);
 
     }
+
+
 
     public static function menu_item(){
 
