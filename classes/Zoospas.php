@@ -78,6 +78,64 @@ class Zoospas
 
 
         /**
+         * Таблица с настройками
+         */
+
+
+        $table  = $wpdb->prefix . self::$table_options;
+
+        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
+           id int NOT NULL AUTO_INCREMENT,
+            email varchar(50),
+            volunteer_reg_page varchar(255),
+            animal_page varchar(255),
+            crm_source text,
+            app_code varchar(255),
+            bx24_link varchar(255),
+            PRIMARY KEY (id)
+        )' . $charset_collate;
+
+        dbDelta( $sql );
+
+
+        /**
+         * Таблица с животными
+         */
+
+        $table  = $wpdb->prefix . self::$table_pets;
+
+        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
+           id int NOT NULL AUTO_INCREMENT,
+            arrival_date date,
+            departure_date date,
+            active tinyint(1),
+            text text,
+            preview varchar(255),
+            PRIMARY KEY (id)
+        )' . $charset_collate;
+
+        dbDelta( $sql );
+
+        /**
+         * Таблица с мета-данными животных
+         */
+
+
+        $table  = $wpdb->prefix . self::$table_pet_meta;
+
+        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
+           id int NOT NULL AUTO_INCREMENT,
+            animal_id int NOT NULL,
+            meta_key varchar(255),
+            meta_value varchar(255),
+            PRIMARY KEY (id),
+            FOREIGN KEY (animal_id) REFERENCES '. $wpdb->prefix . self::$table_pets .'(id)
+        )' . $charset_collate;
+
+        dbDelta( $sql );
+
+
+        /**
          * Таблица с фотографиями животных (для слайдшоу)
          */
 
@@ -124,6 +182,37 @@ class Zoospas
 
 
         /**
+         * Удаление таблицы с настройками
+         */
+
+        $table = $wpdb->prefix . self::$table_options;
+
+        $sql = 'DROP TABLE '. $table;
+
+        $wpdb->query($sql);
+
+        /**
+         * Удаление таблицы с животными
+         */
+
+        $table = $wpdb->prefix . self::$table_pets;
+
+        $sql = 'DROP TABLE '. $table;
+
+        $wpdb->query($sql);
+
+        /**
+         * Удаление таблицы с данными животных
+         */
+
+        $table = $wpdb->prefix . self::$table_pet_meta;
+
+        $sql = 'DROP TABLE '. $table;
+
+        $wpdb->query($sql);
+
+
+        /**
          * Удаление таблицы соц.сетей волонтёров
          */
 
@@ -143,7 +232,6 @@ class Zoospas
         $sql = 'DROP TABLE '. $table;
 
         $wpdb->query($sql);
-
 
 
     }
