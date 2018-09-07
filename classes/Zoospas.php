@@ -31,7 +31,10 @@ class Zoospas
 
         require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/functions.php' );
 
+
+
     }
+
 
     public static function plugin_activation(){
 
@@ -42,6 +45,9 @@ class Zoospas
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
         $table  = $wpdb->prefix . self::$table_activists;
+
+
+
 
 
         /**
@@ -109,6 +115,7 @@ class Zoospas
             arrival_date date,
             departure_date date,
             active tinyint(1),
+            header text,
             text text,
             preview varchar(255),
             PRIMARY KEY (id)
@@ -253,7 +260,6 @@ class Zoospas
 
         echo '<h2>' . __( 'Admin Panel', 'zoospas' ) . '</h2>';
 
-
         do_action('zs_general_content_of_pages_before_content');
 
         do_action('zs_admin_panel');
@@ -269,13 +275,6 @@ class Zoospas
 
 
         echo '<h2>' . __( 'Pet list', 'zoospas' ) . '</h2>';
-
-        /*$screen = get_current_screen();
-
-        echo '<pre>';
-        print_r($screen);
-        echo '</pre>';*/
-
 
         do_action('zs_general_content_of_pages_before_content');
 
