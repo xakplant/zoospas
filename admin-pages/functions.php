@@ -7,6 +7,8 @@
  */
 
 
+require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/fieldset.php' );
+
 add_action('wp_footer', 'zs_get_bitrix_open_line', 100);
 function zs_get_bitrix_open_line(){
     ?>
@@ -24,15 +26,15 @@ function zs_get_bitrix_open_line(){
 add_action('init', 'zoospas_register_post_types');
 
 function zoospas_register_post_types(){
-    register_post_type('post_type_name', array(
+    register_post_type('zs_pets', array(
         'label'  => 'Pets',
         'labels' => array(
-            'singular_name'      => 'Pet', // название для одной записи этого типа
-            'name'               => 'Pets', // основное название для типа записи
-            'add_new'            => 'Add Pet', // для добавления новой записи
+            'singular_name'      => _x('Pet', 'zoospas'), // название для одной записи этого типа
+            'name'               => _x('Pets', 'zoospas'), // основное название для типа записи
+            'add_new'            => _x('Add Pet', 'zoospas'), // для добавления новой записи
             'add_new_item'       => 'Addition Pet', // заголовка у вновь создаваемой записи в админ-панели.
-            'edit_item'          => 'Edit Pet', // для редактирования типа записи
-            'new_item'           => 'New Pet', // текст новой записи
+            'edit_item'          => _x('Edit Pet', 'zoospas'), // для редактирования типа записи
+            'new_item'           => _x('New Pet', 'zoospas'), // текст новой записи
             'view_item'          => 'View Pet', // для просмотра записи этого типа.
             'search_items'       => 'Search Pet', // для поиска по этим типам записи
             // todo нормально перевести запись ниже
@@ -41,7 +43,6 @@ function zoospas_register_post_types(){
             'parent_item_colon'  => 'Parent of Pets', // для родителей (у древовидных типов)
             'menu_name'          => 'Pets' // название меню
         ),
-        'description'         => 'Описание записей с животными',
         'description'         => 'Описание записей с животными',
         'public'              => true,
         'publicly_queryable'  => null, // зависит от public
@@ -61,7 +62,11 @@ function zoospas_register_post_types(){
         'supports'            => array('title','editor'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
         'taxonomies'          => array(),
         'has_archive'         => false,
-        'rewrite'             => true,
         'query_var'           => true,
+        'supports' => array(
+                'title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'
+        ),
     ) );
 }
+
+

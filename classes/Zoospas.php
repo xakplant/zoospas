@@ -251,7 +251,9 @@ class Zoospas
 
         add_submenu_page( 'zs_admin', __( 'Admin Panel', 'zoospas' ) , __( 'Admin Panel', 'zoospas' ) ,   'manage_options', 'zs_admin', array( __CLASS__, 'admin_panel' ));
 
-        add_submenu_page( 'zs_admin', __( 'Pet list', 'zoospas' ), __( 'Pet list', 'zoospas' ),  'manage_options', 'zs_pet_list', array( __CLASS__, 'pet_list' ));
+        // todo удалить pet list
+
+        add_submenu_page( 'zs_admin', __( 'Pets', 'zoospas' ), __( 'Pets', 'zoospas' ),  'manage_options', 'zs_pet_list', array( __CLASS__, 'pet_list' ));
 
     }
 
@@ -259,6 +261,8 @@ class Zoospas
 
 
         echo '<h2>' . __( 'Admin Panel', 'zoospas' ) . '</h2>';
+
+
 
         do_action('zs_general_content_of_pages_before_content');
 
