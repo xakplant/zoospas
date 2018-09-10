@@ -38,6 +38,10 @@ function zs_meta_array(){
     $callWalk = function ($value) use (&$column) {$column[$value['meta_key']][] = $value['meta_value'];};
     array_walk($result, $callWalk);
 
+    foreach ($column as &$col) {
+        $col = array_unique($col);
+    }
+
     return $column;
 
 
@@ -48,12 +52,12 @@ function print_select(){
 
     $array = zs_meta_array();
 
-    echo '<div>';
+    echo '<div><form data-type="zs_ajaz_form">';
 
         foreach ($array as $key=>$value){
 
             echo '<div data-type="zs_filter"><label>' . __(substr($key, 4), 'zoospas') . '</label><br>';
-            echo '<select data-value="' .$key. '">';
+            echo '<select name="'. $key .'" data-value="' .$key. '">';
 
                     foreach ($value as $val){
 
@@ -65,9 +69,9 @@ function print_select(){
 
         }
 
-        echo '<button class="btn-zs-default">' . __('Select', 'zoospas'). '</button>';
+        echo '<button type="submit" data-type="zs_ajax_btn" class="btn-zs-default">' . __('Select', 'zoospas'). '</button>';
 
-    echo '</div>';
+    echo '</form></div>';
 
 
 }
@@ -100,18 +104,51 @@ add_action('wp_footer', 'my_action_javascript', 99); // для фронта
 function my_action_javascript() {
     ?>
     <script type="text/javascript" >
-        jQuery(document).ready(function($) {
-            var data = {
-                action: 'zs_filtered',
-                whatever: 1234
+
+        var zs_submiy = document.querySelector('[data-type="zs_ajax_btn"]');
+
+
+
+        function ZS_submitListener(){
+            event.preventDefault();
+
+            var form = document.querySelector('[data-type="zs_ajaz_form"]');
+            var data = new FormData(form);
+
+
+
+           // data = JSON.stringify(data);
+
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function () {
+                if(this.readyState == 4 && this.status == 200){
+                    document.querySelector('[data-type="zs_ajax_box"]').innerHTML = this.responseText;
+                }
             };
 
-            jQuery.post( zs_filter.url, data, function(response) {
 
-                jQuery('[data-type="zs_ajax_box"]').html('Получено с сервера: ' + response);
+            xhttp.open('POST', zs_filter.url + "?action=zs_filtered", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            //xhttp.setRequestHeader('Content-Type', 'multipart/form-data');
+           /*var mass = [
+                        lex => '15',
+                ];*/
 
-            });
-        });
+            xhttp.send(data);
+
+
+
+
+        }
+        window.addEventListener('click', ZS_submitListener, zs_submiy);
+
+
+
+
+
+
+
     </script>
     <?php
 }
@@ -119,11 +156,20 @@ function my_action_javascript() {
 add_action('wp_ajax_zs_filtered', 'my_action_callback');
 add_action('wp_ajax_nopriv_zs_filtered', 'my_action_callback');
 function my_action_callback() {
-    $whatever = intval( $_POST['whatever'] );
+
+    $whatever = intval( $_POST['lex'] );
+    echo '<pre>';
+    print_r($_REQUEST);
+    echo '</pre>';
+    echo '<br>';
+    echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
+    echo '<br>';
 
     echo $whatever + 10;
 
-    // выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
+
     wp_die();
 }
 
