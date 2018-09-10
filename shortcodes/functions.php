@@ -5,6 +5,8 @@
  * Date: 25.08.2018
  * Time: 14:57
  */
+
+require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/filter.php' );
 function zs_print_user_buttons(){
     ?>
 
