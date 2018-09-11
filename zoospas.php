@@ -20,10 +20,6 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 }
 
 
-
-
-
-
 define( 'ZOOSPAS_VERSION', '0.1.0' );
 define( 'ZOOSPAS_MINIMUM_WP_VERSION', '0.1' );
 define( 'ZOOSPAS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -40,8 +36,8 @@ require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/events.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/front-pages/functions.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/front-pages/events.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/assets/functions.php' );
+require_once( ZOOSPAS_PLUGIN_DIR . '/classes/ZoospasFilter.php' );
 require_once( ZOOSPAS_PLUGIN_DIR . '/classes/Zoospas.php' );
-
 
 
 
