@@ -225,15 +225,8 @@ class ZoospasFilter
                 do_action('zs_print_pet_card');
 
 
-
-                /*the_title('<h2>', '</h2>');
-
-                echo '<img src="' .get_the_post_thumbnail_url() . '"/>';
-
-                the_content();
-                the_excerpt();*/
-
             endwhile;
+
 
         }
         else {
@@ -241,6 +234,8 @@ class ZoospasFilter
             echo '<h2>'. __('Not Found', 'zoospas') .'</h2>';
 
         }
+
+
 
 
 

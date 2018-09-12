@@ -25,6 +25,8 @@ function zs_print_pet_card(){
     // Content
      do_action('zs_card_content');
 
+     // Admin Edit
+    do_action('zs_admin_edit_post');
 
     // Wraper end
     do_action('zs_card_wraper_end');
@@ -94,6 +96,9 @@ function zs_card_meta(){
 
     ob_start();
 
+    /**
+     * @hook zs_attr_printer
+     */
     do_action('zs_table_attr', $table_setting);
 
     $output = ob_get_contents();
@@ -115,8 +120,11 @@ function zs_card_meta(){
 }
 add_action('zs_card_meta', 'zs_card_meta', 20);
 
-
-function zs_table_attr($settings){
+/**
+ * @param $settings
+ * print string with attr element
+ */
+function zs_attr_printer($settings){
 
     $attrs = '';
 
@@ -145,6 +153,23 @@ function zs_table_attr($settings){
     echo $attrs;
 
 }
-add_action('zs_table_attr', 'zs_table_attr');
+add_action('zs_table_attr', 'zs_attr_printer');
 
 
+function zs_admin_edit_post($settings = null){
+
+    if(is_admin()){
+        if($settings){
+
+            echo '<a ';
+            zs_attr_printer($settings);
+            echo 'href="/wp-admin/post.php?post='. get_the_ID() .'&amp;action=edit">'.__('Edit', 'zoospas') .'</a>';;
+        }
+        else {
+
+            echo '<a href="/wp-admin/post.php?post='. get_the_ID() .'&amp;action=edit">'.__('Edit', 'zoospas') .'</a>';
+
+        }
+    }
+}
+add_action('zs_admin_edit_post', 'zs_admin_edit_post');
