@@ -6,7 +6,7 @@
  * Time: 11:21
  */
 //todo переписать название шорткода
-add_shortcode('zs_meta_array', 'zs_print_filter_n_results');
+add_shortcode('zs_print_filter', 'zs_print_filter_n_results');
 
 function zs_print_filter_n_results(){
 

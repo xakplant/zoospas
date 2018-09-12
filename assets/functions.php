@@ -16,7 +16,7 @@ function zoospas_enqueue_css_js($hook){
 
 function zoospas_front_register_css_js() {
 
-    wp_register_style('zoospas_style_front', ZOOSPAS_PLUGIN_URL . 'assets/css/front.css', array(), '1.0');
+    wp_register_style('zoospas_style_front', ZOOSPAS_PLUGIN_URL . 'assets/css/front.css', array(), '2.0');
     wp_register_script('zoospas_front', ZOOSPAS_PLUGIN_URL . 'assets/js/front.js', array('jquery'), '1.0', true);
 }
 add_action( 'wp_enqueue_scripts', 'zoospas_front_register_css_js' );

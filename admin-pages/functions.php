@@ -66,7 +66,7 @@ function zoospas_register_post_types(){
         'supports' => array(
                 'title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'
         ),
+        'rewrite' => array('slug' => 'pets'),
     ) );
 }
-
 

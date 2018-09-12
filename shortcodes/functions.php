@@ -18,31 +18,11 @@ function zs_print_user_buttons(){
         </div>
 
     <?php
+
+    //TODO добавить нужный скрипт
     wp_enqueue_scripts('zoospas_script');
 }
 add_shortcode('zs_print_user_buttons', 'zs_print_user_buttons');
-
-add_shortcode('zs_print_pet_list', 'zs_print_petlist_user');
-
-function zs_print_petlist_user(){
-
-    
-   $query = new WP_Query(array('post_type'=>'post', 'category_name'=>'pet'));
-   
-
-       
-   while($query->have_posts()): $query->the_post();?>
-
-    <div class="lit-item">
-        <span><?php the_title('<a href="'. get_permalink() .'">', '</a>'); ?></span>
-        <span><?php the_content(); ?></span>
-        <span><?php get_the_post_thumbnail(); ?></span>
-    </div>
-
-
-    <?php endwhile;
-    
-}
 
 
 function zs_volontier_form(){

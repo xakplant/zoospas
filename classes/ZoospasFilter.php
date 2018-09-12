@@ -9,6 +9,8 @@
 class ZoospasFilter
 {
 
+    //TODO переписать как фабрику
+
     private static function zs_get_meta_key(){
 
         global $wpdb;
@@ -57,10 +59,10 @@ class ZoospasFilter
 
         $array = self::zs_get_arr_metadata();
 
-        echo '<div><form data-type="zs_ajaz_form">';
+        echo '<div class="zs_filter_block"><form data-type="zs_ajaz_form">';
 
         foreach ($array as $key=>$value){
-
+            if($key != '_zs_age'){
             echo '<div data-type="zs_filter"><label>' . __(substr($key, 4), 'zoospas') . '</label><br>';
             echo '<select name="'. $key .'" data-value="' .$key. '">';
 
@@ -72,7 +74,22 @@ class ZoospasFilter
 
             echo '</select></div>';
 
+            }
+
+            else {
+
+                echo '<div data-type="zs_ajax_range" class="price-slider">';
+
+                echo  '<input name="_zs_age_min" value="'. min($value) .'" min="'. min($value) .'" max="'. max($value) .'" step="1" type="range" oninput="updatePriceLabels()">';
+
+                echo '<input name="_zs_age_max" value="'. max($value) .'" min="'. min($value) .'" max="'. max($value) .'" step="1" type="range" oninput="updatePriceLabels()">';
+
+                echo '</div>';
+
+            }
+
         }
+
 
         echo '<button type="submit" data-type="zs_ajax_btn" class="btn-zs-default">' . __('Select', 'zoospas'). '</button>';
 
@@ -111,15 +128,25 @@ class ZoospasFilter
 
                 var data = new Object();
 
+                data.zs_age_min = document.querySelector('input[name="_zs_age_min"]').value;
+                data.zs_age_max = document.querySelector('input[name="_zs_age_max"]').value;
+
                 <?php
 
                 $keys = self::zs_get_meta_key();
 
-                    foreach ($keys as $key):?>
+                    foreach ($keys as $key):
+                    if($key != '_zs_age'):
+                ?>
 
                 data.<?php echo $key; ?> = document.querySelector('select[data-value="<?php echo $key; ?>"]').value;
 
-                <?php endforeach; ?>
+                <?php
+
+                    endif;
+                    endforeach;
+
+                ?>
 
 
                 data = JSON.stringify(data);
@@ -153,7 +180,6 @@ class ZoospasFilter
 
         $arrFilter = json_decode(stripslashes($_POST['data']), true);
 
-
         $argmts = [
 
             'post_type'=>'zs_pets',
@@ -162,8 +188,27 @@ class ZoospasFilter
             ],
         ];
 
+
+
+        $argmts['meta_query'][] = ['key' => '_zs_age', 'value' => [$arrFilter[zs_age_min] , $arrFilter[zs_age_max] ], 'compare' => 'BETWEEN', 'type' => 'UNSIGNED'];
+
+
         foreach ($arrFilter as $key => $value) {
-            $argmts['meta_query'][] = ['key' => $key, 'value' => $value];
+
+            if($key == 'zs_age_min') {
+
+
+
+            }
+            elseif ($key == 'zs_age_max'){
+
+
+
+            }
+            else {
+                $argmts['meta_query'][] = ['key' => $key, 'value' => $value];
+            }
+
         }
 
         $query = new WP_Query($argmts);
