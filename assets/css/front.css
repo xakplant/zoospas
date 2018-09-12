@@ -8,6 +8,16 @@
     padding-right: 15px;
     box-sizing: border-box;
 }
+.zs_card{
+    display: block;
+    border: solid 1px #e0e0e0;
+    margin: 10px 0;
+}
+.zs_card img{
+    max-width:100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 
 /* Slide */
 

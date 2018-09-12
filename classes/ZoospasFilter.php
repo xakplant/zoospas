@@ -11,7 +11,7 @@ class ZoospasFilter
 
     //TODO переписать как фабрику
 
-    private static function zs_get_meta_key(){
+    public static function zs_get_meta_key(){
 
         global $wpdb;
 
@@ -218,12 +218,20 @@ class ZoospasFilter
             while ( $query->have_posts() ) :
                 $query->the_post();
 
-                the_title('<h2>', '</h2>');
+                /**
+                 * @hook zs_print_pet_card 10
+                 * file front-pages/functions.php
+                 */
+                do_action('zs_print_pet_card');
+
+
+
+                /*the_title('<h2>', '</h2>');
 
                 echo '<img src="' .get_the_post_thumbnail_url() . '"/>';
 
                 the_content();
-                the_excerpt();
+                the_excerpt();*/
 
             endwhile;
 

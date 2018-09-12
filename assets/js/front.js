@@ -24,48 +24,6 @@ function updatePriceLabels() {
     }
 }
 
-/*
- function ZS_AddValues_filter() {
- var element = document.querySelector('[data-type="zs_ajax_range"]');
- var firstInput = element.firstChild;
- var lastInput = element.lastChild;
-
- var firstValue = firstInput.getAttribute('value');
- //var lastValue = lastInput.attr('value');
-
-
- var first = document.createElement('div');
-
- first.innerText =  firstValue;
-
- first.classList.add('first');
-
- element.appendChild(first);
-
- }
-
- function ZS_AddValues_filter2() {
- var element = document.querySelector('[data-type="zs_ajax_range"]');
- var firstInput = element.firstChild;
- var lastInput = element.lastChild;
-
- var firstValue = firstInput.getAttribute('value');
- //var lastValue = lastInput.attr('value');
-
-
- var first = document.getElementsByClassName('first');
-
- first.innerText =  firstValue;
-
-
-
- }
-
- var ZS_rangeSelector = document.querySelector('[data-type="zs_ajax_range"]');
-
- window.addEventListener('load', ZS_AddValues_filter);
- ZS_rangeSelector.addEventListener('change', ZS_AddValues_filter2);*/
-
 
 var ZS_filter;
 
@@ -133,9 +91,4 @@ ZS_filter.prototype.Change = function () {
 
 
 }
-
-
-
-
-
 var e = new ZS_filter();
