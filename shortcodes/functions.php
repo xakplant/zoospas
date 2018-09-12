@@ -8,15 +8,14 @@
 
 require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/filter.php' );
 function zs_print_user_buttons(){
+
+    //TODO использовать перевод, добавить принятие атрибутов в шорткод для указания целевых страниц
+
     ?>
-
         <div class="zs_button_block">
-
             <a class="zs-btn zs-btn-default" href="/petlist">Приютить животное</a>
-            <a class="zs-btn zs-btn-default" href="/volontier">Предложить попощь</a>
-
+            <a class="zs-btn zs-btn-default" href="/volontier">Предложить помощь</a>
         </div>
-
     <?php
 
     //TODO добавить нужный скрипт
@@ -89,7 +88,7 @@ function zs_volonter_reg(){
     $message .= ' его почта ' . $email;
     $message .= ' примечание "' . $other . '"';
     
-    
+    //TODO брать адрес почты из настроек wordpress или из настроек плагина
     
     $call = wp_mail( 'cherr_guw@mail.ru', 'Новая регистрация', $message, $headers, $attachments );
     
@@ -104,6 +103,8 @@ function zs_volonter_reg(){
 
 
 function zs_after_post_form(){
+
+    //TODO хранить данные скрипта битрикс 24 в файле
     
     ?>
     <script id="bx24_form_button" data-skip-moving="true">
