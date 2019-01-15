@@ -15,7 +15,7 @@ class ZoospasFilter
 
         global $wpdb;
 
-        $sql = 'SELECT DISTINCT `meta_key` FROM `wp_postmeta` WHERE `meta_key` LIKE "_zs_%"';
+        $sql = 'SELECT DISTINCT `meta_key` FROM `wp_postmeta` WHERE `meta_key` REGEXP "_zs_"';
 
         $result = $wpdb->get_results($sql, ARRAY_A);
 
