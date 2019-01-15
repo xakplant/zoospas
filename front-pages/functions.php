@@ -104,7 +104,9 @@ function zs_card_meta(){
     $output = ob_get_contents();
 
     ob_end_clean();
-
+    /**
+    * TODO переписать оболочки как событие
+    */
     echo '<table '.$output.'>';
     echo '<tbody>';
 
