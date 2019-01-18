@@ -54,4 +54,32 @@
     background-color: white;
     border: 2px solid black;
 }
+.zoospas_modal_body, .zs_form_class{
+    padding: 2rem;
+}
+.zoospas_modal_body input, .zoospas_modal_body select, .zs_form_class input, .zs_form_class select{
+    display: block;
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 20px;
+}
+.zoospas_modal_bg{
 
+}
+.zoospas_btn {
+
+}
+.zoospas_mb{
+    margin-bottom: 20px;
+}
+.zs_nail_responce_box {
+    display: block;
+    padding: 15px;
+    border-radius: 2px;
+}
+.zs_nail_responce_box.false {
+    background-color: crimson;
+}
+.zs_nail_responce_box.true {
+    background-color: #1caf9a;
+}

@@ -7,239 +7,29 @@
  * Time: 10:43
  */
 
-use Cb\Admin\Tables;
-
-if( ! class_exists( 'WP_List_Table' ) ) {
-    require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
-}
-
-
 
 class Zoospas
 {
 
 
-    private static $table_options = 'zs_options';
-    private static $table_activists = 'zs_activists';
-    private static $table_activists_soclink = 'zs_activists_soclink';
-    private static $table_pets = 'zs_pets';
-    private static $table_pet_meta = 'zs_pet_meta';
-    private static $table_pet_pics = 'zs_pet_image';
-
-
     public static function init(){
 
+
         require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/functions.php' );
-
-
 
     }
 
 
     public static function plugin_activation(){
 
-        global $wpdb;
-
-        $charset_collate = $wpdb->get_charset_collate();
-
-        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-
-        $table  = $wpdb->prefix . self::$table_activists;
-
-
-
-
-
-        /**
-         * Таблица с данными активиста
-         */
-
-
-
-        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
-          id int NOT NULL AUTO_INCREMENT,
-            name varchar(255),
-            phone varchar(255),
-            email varchar(255),
-            PRIMARY KEY (id)
-        )' . $charset_collate;
-
-        dbDelta( $sql );
-
-        /**
-         * Таблица со ссылками на соц. сети активиста
-         */
-
-        $table  = $wpdb->prefix . self::$table_activists_soclink;
-
-        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
-          id int NOT NULL AUTO_INCREMENT,
-            reference varchar(255),
-            activist_id int,
-            PRIMARY KEY (id),
-            FOREIGN KEY (activist_id) REFERENCES '. $wpdb->prefix . self::$table_activists .'(id)
-        )' . $charset_collate;
-
-        dbDelta( $sql );
-
-
-        /**
-         * Таблица с настройками
-         */
-
-
-        $table  = $wpdb->prefix . self::$table_options;
-
-        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
-           id int NOT NULL AUTO_INCREMENT,
-            email varchar(50),
-            volunteer_reg_page varchar(255),
-            animal_page varchar(255),
-            crm_source text,
-            app_code varchar(255),
-            bx24_link varchar(255),
-            PRIMARY KEY (id)
-        )' . $charset_collate;
-
-        dbDelta( $sql );
-
-
-        /**
-         * Таблица с животными
-         */
-
-        $table  = $wpdb->prefix . self::$table_pets;
-
-        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
-           id int NOT NULL AUTO_INCREMENT,
-            arrival_date date,
-            departure_date date,
-            active tinyint(1),
-            header text,
-            text text,
-            preview varchar(255),
-            PRIMARY KEY (id)
-        )' . $charset_collate;
-
-        dbDelta( $sql );
-
-        /**
-         * Таблица с мета-данными животных
-         */
-
-
-        $table  = $wpdb->prefix . self::$table_pet_meta;
-
-        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
-           id int NOT NULL AUTO_INCREMENT,
-            animal_id int NOT NULL,
-            meta_key varchar(255),
-            meta_value varchar(255),
-            PRIMARY KEY (id),
-            FOREIGN KEY (animal_id) REFERENCES '. $wpdb->prefix . self::$table_pets .'(id)
-        )' . $charset_collate;
-
-        dbDelta( $sql );
-
-
-        /**
-         * Таблица с фотографиями животных (для слайдшоу)
-         */
-
-
-        $table  = $wpdb->prefix . self::$table_pet_pics;
-
-        $sql = 'CREATE TABLE IF NOT EXISTS '. $table .' (
-            id int NOT NULL AUTO_INCREMENT,
-            src varchar(255),
-            animal_id int,
-            PRIMARY KEY (id),
-            FOREIGN KEY (animal_id) REFERENCES '. $wpdb->prefix . self::$table_pets .'(id)
-        )' . $charset_collate;
-
-        dbDelta( $sql );
-
-
     }
 
 
     public static function plugin_deactivation(){
 
-
-
-
-
-
     }
 
     public static function plugin_uninstall(){
-
-        global $wpdb;
-
-
-        /**
-         * Удаление таблицы с волонтёроами
-         */
-
-        $table = $wpdb->prefix . self::$table_activists;
-
-        $sql = 'DROP TABLE '. $table;
-
-        $wpdb->query($sql);
-
-
-        /**
-         * Удаление таблицы с настройками
-         */
-
-        $table = $wpdb->prefix . self::$table_options;
-
-        $sql = 'DROP TABLE '. $table;
-
-        $wpdb->query($sql);
-
-        /**
-         * Удаление таблицы с животными
-         */
-
-        $table = $wpdb->prefix . self::$table_pets;
-
-        $sql = 'DROP TABLE '. $table;
-
-        $wpdb->query($sql);
-
-        /**
-         * Удаление таблицы с данными животных
-         */
-
-        $table = $wpdb->prefix . self::$table_pet_meta;
-
-        $sql = 'DROP TABLE '. $table;
-
-        $wpdb->query($sql);
-
-
-        /**
-         * Удаление таблицы соц.сетей волонтёров
-         */
-
-        $table = $wpdb->prefix . self::$table_activists_soclink;
-
-        $sql = 'DROP TABLE '. $table;
-
-        $wpdb->query($sql);
-
-        /**
-         * Удаление таблицы с фотографиями животных (для слайдшоу)
-         */
-
-
-        $table = $wpdb->prefix . self::$table_pet_pics;
-
-        $sql = 'DROP TABLE '. $table;
-
-        $wpdb->query($sql);
-
 
     }
 
@@ -249,46 +39,173 @@ class Zoospas
 
         add_menu_page( __( 'Zoospas', 'zoospas' ), __( 'Zoospas', 'zoospas' ), 'manage_options', 'zs_admin', array( __CLASS__, 'admin_panel' ));
 
+        global $submenu;
+        $url = '/wp-admin/post-new.php?post_type=zs_pets';
+        $submenu['zs_admin'][] = array('Add pet', 'manage_options', $url);
+
         add_submenu_page( 'zs_admin', __( 'Admin Panel', 'zoospas' ) , __( 'Admin Panel', 'zoospas' ) ,   'manage_options', 'zs_admin', array( __CLASS__, 'admin_panel' ));
+        add_submenu_page( 'zs_admin', __( 'Support', 'zoospas' ) , __( 'Support', 'zoospas' ) ,   'manage_options', 'zs_support', array( __CLASS__, 'support' ));
 
-        // todo удалить pet list
+    }
 
-        add_submenu_page( 'zs_admin', __( 'Pets', 'zoospas' ), __( 'Pets', 'zoospas' ),  'manage_options', 'zs_pet_list', array( __CLASS__, 'pet_list' ));
+    public static function  support(){
 
+        ?>
+
+        <h2><?php echo get_admin_page_title() ?></h2>
+
+        <?php
     }
 
     public static function  admin_panel(){
+        ?>
+
+        <div class="wrap">
+            <h2><?php echo get_admin_page_title() ?></h2>
 
 
-        echo '<h2>' . __( 'Admin Panel', 'zoospas' ) . '</h2>';
+            <form action="options.php" method="POST">
+                <?php
+                settings_fields( 'zs_option_group' );
+                do_settings_sections( 'zs_options' );
+                submit_button();
+                ?>
+            </form>
+            <form action="options.php" method="POST">
+                <?php
+                settings_fields( 'zs_option_group2' );
+                do_settings_sections( 'zs_options_two' );
+                submit_button();
+                ?>
+            </form>
+        </div>
 
-
-
-        do_action('zs_general_content_of_pages_before_content');
-
-        do_action('zs_admin_panel');
-
-        do_action('zs_general_content_of_pages_after_content');
-
-        do_action('admin_enqueue_scripts');
-
-
+        <?php
     }
 
-    public static function pet_list(){
+    public static function zs_options(){
+
+        /**
+         * TODO перевести на английский
+         */
+        add_settings_section('zs_option_group', __('Настройки целевых кнопок', 'zoospas'), 'zs_display_options_group', 'zs_options');
+        add_settings_section('zs_option_group2', __('Настройки формы обратной связи', 'zoospas'), 'zs_display_options_group', 'zs_options_two');
+        /**
+         * Настройки кнопок
+         */
+
+        add_settings_field('zs_left_button_text', __('Left button text', 'zoospas'), function (){
+            echo '<input type="input" name="zs_left_button_text" id="zs_left_button_text" value="'. get_option('zs_left_button_text') .'" />';
+        }, 'zs_options', 'zs_option_group');
+        
+        add_settings_field('zs_left_button_class', __('Left button class', 'zoospas'), function (){
+            echo '<input type="input" name="zs_left_button_class" id="zs_left_button_class" value="'. get_option('zs_left_button_class') .'" />';
+        }, 'zs_options', 'zs_option_group');
+
+        add_settings_field('zs_left_button_link', __('Left button link', 'zoospas'), function (){
+            echo '<input type="input" name="zs_left_button_link" id="zs_left_button_link" value="'. get_option('zs_left_button_link') .'" />';
+        }, 'zs_options', 'zs_option_group');
+
+        add_settings_field('zs_left_button_html_id', __('Left button html id', 'zoospas'), function (){
+            echo '<input type="input" name="zs_left_button_html_id" id="zs_left_button_html_id" value="'. get_option('zs_left_button_html_id') .'" />';
+            echo '<hr/>';
+        }, 'zs_options', 'zs_option_group');
 
 
-        echo '<h2>' . __( 'Pet list', 'zoospas' ) . '</h2>';
+        add_settings_field('zs_right_button_text', __('Right button text', 'zoospas'), function (){
+            echo '<input type="input" name="zs_right_button_text" id="zs_right_button_text" value="'. get_option('zs_right_button_text') .'" />';
+        }, 'zs_options', 'zs_option_group');
 
-        do_action('zs_general_content_of_pages_before_content');
+        add_settings_field('zs_right_button_class', __('Right button class', 'zoospas'), function (){
+            echo '<input type="input" name="zs_right_button_class" id="zs_right_button_class" value="'. get_option('zs_right_button_class') .'" />';
+        }, 'zs_options', 'zs_option_group');
 
-        do_action('zs_pet_list');
+        add_settings_field('zs_right_button_link', __('Right button link', 'zoospas'), function (){
+            echo '<input type="input" name="zs_right_button_link" id="zs_right_button_link" value="'. get_option('zs_right_button_link') .'" />';
+        }, 'zs_options', 'zs_option_group');
 
-        do_action('zs_general_content_of_pages_after_content');
+        add_settings_field('zs_right_button_html_id', __('Right button html id', 'zoospas'), function (){
+            echo '<input type="input" name="zs_right_button_html_id" id="zs_right_button_html_id" value="'. get_option('zs_right_button_html_id') .'" />';
+        }, 'zs_options', 'zs_option_group');
 
+
+        /**
+         * Настройки первой кнопки
+         */
+        register_setting('zs_option_group', 'zs_left_button_text');
+        register_setting('zs_option_group', 'zs_left_button_class');
+        register_setting('zs_option_group', 'zs_left_button_link');
+        register_setting('zs_option_group', 'zs_left_button_html_id');
+
+        /**
+         * Настройки второй кнопки
+         */
+        register_setting('zs_option_group', 'zs_right_button_text');
+        register_setting('zs_option_group', 'zs_right_button_class');
+        register_setting('zs_option_group', 'zs_right_button_link');
+        register_setting('zs_option_group', 'zs_right_button_html_id');
+
+
+        /**
+         * Настройки второй формы обратной связи
+         */
+        add_settings_field('zs_form_email', __('Email for form', 'zoospas'), function (){
+            echo '<input type="email" name="zs_form_email" id="zs_form_email" value="'. get_option('zs_form_email') .'" />';
+        }, 'zs_options_two', 'zs_option_group2');
+
+        add_settings_field('zs_form_type', __('Type', 'zoospas'), function (){
+
+            $type = ['js', 'link', 'modal', 'form'];
+            $value = get_option('zs_form_type');
+            ?>
+
+            <select id="zs_right_button_html_id" name="zs_form_type">
+                <?php foreach ($type as $t):?>
+                    <option <?php echo ($t == $value) ? 'selected' : ''; ?> ><?php echo __($t, 'zoospas'); ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <?php
+
+        }, 'zs_options_two', 'zs_option_group2');
+
+        add_settings_field('zs_form_class', __('Form html class', 'zoospas'), function (){
+            echo '<input type="text" name="zs_form_class" id="zs_form_class" value="'. get_option('zs_form_class') .'" />';
+        }, 'zs_options_two', 'zs_option_group2');
+
+
+        add_settings_field('zs_form_btn_text', __('Button text', 'zoospas'), function (){
+            echo '<input type="input" name="zs_form_btn_text" id="zs_form_btn_text" value="'. get_option('zs_form_btn_text') .'" />';
+        }, 'zs_options_two', 'zs_option_group2');
+
+
+        add_settings_field('zs_form_btn_class', __('Button class', 'zoospas'), function (){
+            echo '<input type="input" name="zs_form_btn_class" id="zs_form_btn_class" value="'. get_option('zs_form_btn_class') .'" />';
+        }, 'zs_options_two', 'zs_option_group2');
+
+        add_settings_field('zs_form_btn_html_id', __('Button html id', 'zoospas'), function (){
+            echo '<input type="input" name="zs_form_btn_html_id" id="zs_form_btn_html_id" value="'. get_option('zs_form_btn_html_id') .'" />';
+        }, 'zs_options_two', 'zs_option_group2');
+
+        add_settings_field('zs_form_btn_link', __('Button link', 'zoospas'), function (){
+            echo '<input type="input" name="zs_form_btn_link" id="zs_form_btn_link" value="'. get_option('zs_form_btn_link') .'" />';
+        }, 'zs_options_two', 'zs_option_group2');
+
+
+        add_settings_field('zs_form_btn_js', __('JS', 'zoospas'), function (){
+            echo '<textarea name="zs_form_btn_js" id="zs_form_btn_js">' . get_option('zs_form_btn_js') . '</textarea>';
+        }, 'zs_options', 'zs_option_group2');
+
+        register_setting('zs_option_group2', 'zs_form_email');
+        register_setting('zs_option_group2', 'zs_form_type');
+        register_setting('zs_option_group2', 'zs_form_class');
+        register_setting('zs_option_group2', 'zs_form_btn_text');
+        register_setting('zs_option_group2', 'zs_form_btn_js');
+        register_setting('zs_option_group2', 'zs_form_btn_class');
+        register_setting('zs_option_group2', 'zs_form_btn_link');
+        register_setting('zs_option_group2', 'zs_form_btn_html_id');
 
     }
-
 
 
 }

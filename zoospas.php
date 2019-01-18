@@ -5,7 +5,7 @@
 /*
 Plugin Name: Zoospas project for Hakaton
 Plugin URI: https://web.799000.ru/
-Description:
+Description: Плагин создан при поддержке Теплицы социальных технологий.
 Version: 0.1.0
 Author: ANIT
 Author URI: https://799000.ru/
@@ -19,6 +19,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
+load_plugin_textdomain('zs', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 define( 'ZOOSPAS_VERSION', '0.1.0' );
 define( 'ZOOSPAS_MINIMUM_WP_VERSION', '0.1' );
@@ -36,8 +37,16 @@ require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/events.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/front-pages/functions.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/front-pages/events.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/assets/functions.php' );
-require_once( ZOOSPAS_PLUGIN_DIR . '/classes/ZoospasFilter.php' );
+
+
+
 require_once( ZOOSPAS_PLUGIN_DIR . '/classes/Zoospas.php' );
+require_once( ZOOSPAS_PLUGIN_DIR . '/classes/ZoospasVars.php' );
+new ZoospasVars();
+
+require_once( ZOOSPAS_PLUGIN_DIR . '/classes/ZoospasFilter.php' );
+
+require_once( ZOOSPAS_PLUGIN_DIR . '/classes/ZoospasForm.php' );
 
 
 
@@ -45,7 +54,8 @@ add_action( 'init', array( 'Zoospas', 'init' ) );
 
 register_activation_hook( __FILE__, array( 'Zoospas', 'plugin_activation' ) );
 register_deactivation_hook(__FILE__, array( 'Zoospas', 'plugin_deactivation' ) );
-register_uninstall_hook(__FILE__, array(__CLASS__, 'plugin_uninstall'));
+register_uninstall_hook(__FILE__, array('Zoospas', 'plugin_uninstall'));
 
 
 add_action('admin_menu', array( 'Zoospas', 'menu_item' ));
+add_action('admin_menu', array( 'Zoospas', 'zs_options' ));

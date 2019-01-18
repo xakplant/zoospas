@@ -59,11 +59,15 @@ class ZoospasFilter
 
         $array = self::zs_get_arr_metadata();
 
-        echo '<div class="zs_filter_block"><form data-type="zs_ajaz_form">';
 
+
+        /* TODO переписать как событие. Эту обёртку нужно сделать изменяемой */
+        // echo '<div class="zs_filter_block"><form data-type="zs_ajaz_form">';
+        echo '<div class="choice_wp flex" data-type="zs_ajaz_form">';
+        /* TODO переписать как событие. Эту обёртку нужно сделать изменяемой для каждого инпута*/
         foreach ($array as $key=>$value){
-            if($key != '_zs_age'){
-            echo '<div data-type="zs_filter"><label>' . __(substr($key, 4), 'zoospas') . '</label><br>';
+            echo '<div class="choice_block"><div class="choice_select">';
+            //echo '<div data-type="zs_filter"><label>' . __(substr($key, 4), 'zoospas') . '</label><br>';
             echo '<select name="'. $key .'" data-value="' .$key. '">';
 
             foreach ($value as $val){
@@ -72,28 +76,21 @@ class ZoospasFilter
 
             }
 
-            echo '</select></div>';
+            echo '</select></div></div>';
 
-            }
 
-            else {
 
-                echo '<div data-type="zs_ajax_range" class="price-slider">';
-
-                echo  '<input name="_zs_age_min" value="'. min($value) .'" min="'. min($value) .'" max="'. max($value) .'" step="1" type="range" oninput="updatePriceLabels()">';
-
-                echo '<input name="_zs_age_max" value="'. max($value) .'" min="'. min($value) .'" max="'. max($value) .'" step="1" type="range" oninput="updatePriceLabels()">';
-
-                echo '</div>';
-
-            }
 
         }
 
 
-        echo '<button type="submit" data-type="zs_ajax_btn" class="btn-zs-default">' . __('Select', 'zoospas'). '</button>';
-
-        echo '</form></div>';
+        echo '<div class="choice_block cb_mob">';
+        echo '<a data-type="zs_ajax_btn" class="button button_h1 choice_btn btn-zs-default">Найти</a>';
+        echo '</div>';
+        echo '</div>';
+        // echo '<button type="submit" data-type="zs_ajax_btn" class="btn-zs-default">' . __('Select', 'zoospas'). '</button>';
+        /* TODO переписать как событие. Эту обёртку нужно сделать изменяемой */
+        // echo '</form></div>';
 
     }
 
@@ -113,11 +110,17 @@ class ZoospasFilter
 
     }
 
+
+
+
+
     public static function zs_filert_ajax_script(){
 
         ?>
 
         <script type="text/javascript" >
+
+
 
             var zs_submiy = document.querySelector('[data-type="zs_ajax_btn"]');
 
@@ -128,22 +131,20 @@ class ZoospasFilter
 
                 var data = new Object();
 
-                data.zs_age_min = document.querySelector('input[name="_zs_age_min"]').value;
-                data.zs_age_max = document.querySelector('input[name="_zs_age_max"]').value;
+
 
                 <?php
 
                 $keys = self::zs_get_meta_key();
 
                     foreach ($keys as $key):
-                    if($key != '_zs_age'):
+
                 ?>
 
                 data.<?php echo $key; ?> = document.querySelector('select[data-value="<?php echo $key; ?>"]').value;
 
                 <?php
 
-                    endif;
                     endforeach;
 
                 ?>
@@ -176,6 +177,35 @@ class ZoospasFilter
         <?php
     }
 
+    public static function zs_filert_ajax_script_string(){
+        $script_text = 'var zs_submiy = document.querySelector(\'[data-type="zs_ajax_btn"]\');';
+        $script_text .= 'function ZS_submitListener(event){';
+            $script_text .= 'event.preventDefault();';
+            $script_text .= 'var data = new Object();';
+
+            $keys = self::zs_get_meta_key();
+            foreach ($keys as $key){
+                $script_text .= 'data.' . $key . ' = document.querySelector(\'select[data-value="' . $key . '"]\').value;';
+            }
+
+
+            $script_text .= 'data = JSON.stringify(data);';
+            $script_text .= 'var xhttp = new XMLHttpRequest();';
+            $script_text .= 'xhttp.onreadystatechange = function () {
+                    if(this.readyState == 4 && this.status == 200){
+                        document.querySelector(\'[data-type="zs_ajax_box"]\').innerHTML = this.responseText;
+                    }
+                };';
+            $script_text .= 'xhttp.open(\'POST\', zs_filter.url + "?action=zs_filtered", true);';
+            $script_text .= 'xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");';
+            $script_text .= 'xhttp.send("data="+data);';
+
+
+        $script_text .= '}';
+        $script_text .= 'zs_submiy.addEventListener(\'click\', ZS_submitListener, zs_submiy);';
+        return $script_text;
+    }
+
     public static function zs_filter_handler(){
 
         $arrFilter = json_decode(stripslashes($_POST['data']), true);
@@ -190,24 +220,10 @@ class ZoospasFilter
 
 
 
-        $argmts['meta_query'][] = ['key' => '_zs_age', 'value' => [$arrFilter[zs_age_min] , $arrFilter[zs_age_max] ], 'compare' => 'BETWEEN', 'type' => 'UNSIGNED'];
-
 
         foreach ($arrFilter as $key => $value) {
 
-            if($key == 'zs_age_min') {
-
-
-
-            }
-            elseif ($key == 'zs_age_max'){
-
-
-
-            }
-            else {
-                $argmts['meta_query'][] = ['key' => $key, 'value' => $value];
-            }
+            $argmts['meta_query'][] = ['key' => $key, 'value' => $value];
 
         }
 

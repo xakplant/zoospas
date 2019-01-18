@@ -35,3 +35,16 @@
 ```
 
 Предварительно нужно сохранить скрипт формы в настройках плагина
+
+### Массив с именами zs_get_meta_key_alias()
+
+Возвращает массив:
+
+```
+[
+    '_zs_age'=> __('Age', 'zoospas'),
+    '_zs_sex'=> __('Sex', 'zoospas'),
+    '_zs_size'=> __('Size', 'zoospas'),
+    '_zs_pet_type'=> __('Type of pets', 'zoospas'),
+];
+```

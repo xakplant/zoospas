@@ -7,117 +7,230 @@
  */
 
 require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/filter.php' );
-function zs_print_user_buttons(){
 
-    //TODO использовать перевод, добавить принятие атрибутов в шорткод для указания целевых страниц
-
-    ?>
-        <div class="zs_button_block">
-            <a class="zs-btn zs-btn-default" href="/petlist">Приютить животное</a>
-            <a class="zs-btn zs-btn-default" href="/volontier">Предложить помощь</a>
-        </div>
-    <?php
-
-    //TODO добавить нужный скрипт
-    wp_enqueue_scripts('zoospas_script');
+function zs_get_button_action($text, $class, $url, $id){
+    return '<a class="' . $class . '" href="'. $url .'" id="' . $id . '">'. $text .'</a>';
 }
-add_shortcode('zs_print_user_buttons', 'zs_print_user_buttons');
+add_action('zs_button_left', 'zs_print_button_left_action');
+function zs_print_button_left_action(){
+    $zs_options = ZoospasVars::$options;
+    $text = $zs_options['buttons']['left']['text'];
+    $class = $zs_options['buttons']['left']['class'];
+    $url = $zs_options['buttons']['left']['url'];
+    $html_id = $zs_options['buttons']['left']['html_id'];
 
-
-function zs_volontier_form(){
-
-    ?>
-
-    <form name="zs_volont_form" method="post">
-
-        <input name="name" type="text" placeholder="Введите ваше имя"/>
-        <input name="telephoen" type="tel" placeholder="Введите ваш телефое"/>
-        <input name="email" type="email" placeholder="Введите ваш емаил">
-        <input name="other" type="text" placeholder="Введите вашы соц. сети или примечание">
-        <button type="submit">Отправить</button>
-
-    </form>
-    
-    <div data-type="ajax-response"></div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script>
-		$('form').on('submit', function(){
-			event.preventDefault();
-
-			var name = $('form input[name="name"]').val();
-			var telephoen = $('form input[name="telephoen"]').val();
-			var email = $('form input[name="email"]').val();
-			var other = $('form input[name="other"]').val();
-
-			
-			$.post('/wp-admin/admin-ajax.php', 
-			{'action': 'volonter_reg', 'name': name, 'telephoen': telephoen, 'email': email, 'other': other}, 
-			function(response){
-			    			    
-			     $('[data-type="ajax-response"]').html(response);   
-			});
-			
-		
-			
-		})
-	</script>
-	
-    <?php
-
+    echo zs_get_button_action($text, $class, $url, $html_id);
 }
+add_shortcode('zs_button_left', 'zs_print_button_left');
+function zs_print_button_left(){
 
-add_shortcode('zs_volontier_form', 'zs_volontier_form');
+    $zs_options = ZoospasVars::$options;
+    $text = $zs_options['buttons']['left']['text'];
+    $class = $zs_options['buttons']['left']['class'];
+    $url = $zs_options['buttons']['left']['url'];
+    $html_id = $zs_options['buttons']['left']['html_id'];
 
-add_action('wp_ajax_volonter_reg', 'zs_volonter_reg');
-add_action('wp_ajax_no_priv_volonter_reg', 'zs_volonter_reg');
-function zs_volonter_reg(){
-    $name = $_POST['name'];
-    $telephoen = $_POST['telephoen'];
-    $email = $_POST['email'];
-    $other = $_POST['other'];
+    ob_start();
+    echo zs_get_button_action($text, $class, $url, $html_id);
+    $output = ob_get_contents();
+    ob_end_clean();
+    return $output;
+}
+add_action('zs_button_right', 'zs_print_button_right_action');
+function zs_print_button_right_action(){
+    $zs_options = ZoospasVars::$options;
+    $text = $zs_options['buttons']['right']['text'];
+    $class = $zs_options['buttons']['right']['class'];
+    $url = $zs_options['buttons']['right']['url'];
+    $html_id = $zs_options['buttons']['right']['html_id'];
 
-    echo $name . '<br>';
-    echo $telephoen . '<br>';
-    echo $email . '<br>';
-    echo $other . '<br>';
-    
-    echo '<hr>';
-    
-    $message = $name . ' зарегистрировался на сайте Zoospas';
-    $message .= ' его телефон' . $telephoen;
-    $message .= ' его почта ' . $email;
-    $message .= ' примечание "' . $other . '"';
-    
-    //TODO брать адрес почты из настроек wordpress или из настроек плагина
-    
-    $call = wp_mail( 'cherr_guw@mail.ru', 'Новая регистрация', $message, $headers, $attachments );
-    
-    echo $call;
+    echo zs_get_button_action($text, $class, $url, $html_id);
+}
+add_shortcode('zs_button_right', 'zs_print_button_right');
+function zs_print_button_right(){
+    $zs_options = ZoospasVars::$options;
+    $text = $zs_options['buttons']['right']['text'];
+    $class = $zs_options['buttons']['right']['class'];
+    $url = $zs_options['buttons']['right']['url'];
+    $html_id = $zs_options['buttons']['right']['html_id'];
 
-    wp_die();
+    ob_start();
+    echo zs_get_button_action($text, $class, $url, $html_id);
+    $output = ob_get_contents();
+    ob_end_clean();
+    return $output;
 }
 
 
+/**
+ * Form
+ */
+add_shortcode('zs_form', 'zs_recall_form');
+function zs_recall_form(){
 
-
-
-
-function zs_after_post_form(){
-
-    //TODO хранить данные скрипта битрикс 24 в файле
-    
-    ?>
-    <script id="bx24_form_button" data-skip-moving="true">
-        (function(w,d,u,b){w['Bitrix24FormObject']=b;w[b] = w[b] || function(){arguments[0].ref=u;
-                (w[b].forms=w[b].forms||[]).push(arguments[0])};
-                if(w[b]['forms']) return;
-                var s=d.createElement('script');s.async=1;s.src=u+'?'+(1*new Date());
-                var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
-        })(window,document,'https://b24-pbobc0.bitrix24.ru/bitrix/js/crm/form_loader.js','b24form');
-
-        b24form({"id":"8","lang":"ru","sec":"6ql2yw","type":"button","click":""});
-</script><button class="b24-web-form-popup-btn-8">Забрать животное</button>
-    
-    <?php
+    $type = ZoospasVars::$options['form']['type'];
+    new ZoospasForm();
+    wp_enqueue_style('zoospas_style_front');
+    ob_start();
+    echo ZoospasForm::get_value();
+    $output = ob_get_contents();
+    ob_end_clean();
+    return $output;
 }
-add_shortcode('zs_after_post_form', 'zs_after_post_form', 10);
+add_action( 'admin_post_zoospas_form', 'zoospas_form_action' );
+add_action( 'admin_post_nopriv_zoospas_form', 'zoospas_form_action' );
+function zoospas_form_action(){
+    $args = $_POST;
+
+    $to = ZoospasVars::$options['form']['email'];
+    $to = sanitize_email($to);
+    $subject = $args['subject'];
+    $email = $args['email'];
+    $phone = $args['tel'];
+
+    $headers = array(
+        'From: Zoospas <info@zoospas.ru>',
+        'content-type: text/html; charset=UTF-8',
+        'Cc: John Q Codex <'. $to  .'',
+        'Cc: '. $to
+    );
+
+    $message = '';
+    $message .= '<table>';
+    $message .= '<thead><tr><td>' . __('New appeal from the site') . '</td></tr></thead>';
+    $message .= '<tbody>';
+    $message .= '<tr><td>' . __('Email', 'zoospas') . '</td><td>' . $email . '</td></tr>';
+    $message .= '<tr><td>' . __('Phone number', 'zoospas') . '</td><td>' . $phone . '</td></tr>';
+
+    $message .= '</tbody></table>';
+
+    $responce = wp_mail( $to, $subject, $message, $headers );
+
+    $addr = $_SERVER['HTTP_REFERER'];
+    $addr = str_replace('?zs_mail_responce=true', '', $addr);
+    $addr = str_replace('?zs_mail_responce=false', '', $addr);
+    $concat = '';
+
+
+    if($responce == true){
+        $concat = '?zs_mail_responce=true';
+        header('Location: ' . $addr . $concat);
+        exit;
+    } else {
+        $concat = '?zs_mail_responce=false';
+        header('Location: ' . $addr . $concat);
+        exit;
+    }
+}
+
+/**
+ * Print pets list of type
+ */
+add_action('pre_get_posts', 'zoospas_query_offset', 1 );
+function myprefix_query_offset(&$query) {
+    if ( ! $query->is_posts_page ) {
+        return;
+    }
+}
+
+
+
+add_shortcode('zs_pets_list', 'zs_print_pets_list_of_type_action');
+function zs_print_pets_list_of_type_action($attr, $content = null){
+    $type = $attr['type'];
+    $calc = get_option( 'posts_per_page' );
+    $paged = $GLOBALS['wp_query']->query_vars['paged'];
+    if($paged){
+        $offset = $calc * ($paged - 1);
+    } else {
+        $offset = 0;
+    }
+    $argmts = [
+
+        'post_type'=>'zs_pets',
+        'offset'=>$offset,
+        'meta_query' => [
+            [
+                'relation '=>'OR',
+                'key'=>'_zs_pet_type',
+                'value'=>$type,
+                'compare'=>'LIKE',
+            ]
+        ]
+    ];
+    $query = new WP_Query($argmts);
+
+
+
+    if($query->have_posts()){
+        ob_start();
+        while ( $query->have_posts() ) :
+            $query->the_post();
+            /**
+             * @hook zs_print_pet_card 10
+             * file front-pages/functions.php
+             */
+            do_action('zs_print_pet_card');
+        endwhile;
+
+
+        $GLOBALS['wp_query']->max_num_pages = $query->max_num_pages;
+        the_posts_pagination( array( 'mid_size' => 1, 'prev_text' => __( 'Previous page', 'zoospas' ), 'next_text' => __( 'Next page', 'zoospas' ), 'screen_reader_text' => __( 'Posts navigation' ) ) );
+
+
+        wp_reset_query();
+        return ob_get_clean();
+    } else {
+        ob_start();
+        echo '<h2>'. __('Not Found', 'zoospas') .'</h2>';
+        return ob_get_clean();
+    }
+
+
+
+}
+add_action('zs_pets_list', 'zs_print_pets_list_of_type', 10, 1);
+function zs_print_pets_list_of_type($type){
+    $type = $attr['type'];
+    $calc = get_option( 'posts_per_page' );
+    $paged = $GLOBALS['wp_query']->query_vars['paged'];
+    if($paged){
+        $offset = $calc * ($paged - 1);
+    } else {
+        $offset = 0;
+    }
+    $argmts = [
+
+        'post_type'=>'zs_pets',
+        'offset'=>$offset,
+        'meta_query' => [
+            [
+                'relation '=>'OR',
+                'key'=>'_zs_pet_type',
+                'value'=>$type,
+                'compare'=>'LIKE',
+            ]
+        ]
+    ];
+    $query = new WP_Query($argmts);
+    if($query->have_posts()){
+        while ( $query->have_posts() ) :
+            $query->the_post();
+
+            /**
+             * @hook zs_print_pet_card 10
+             * file front-pages/functions.php
+             */
+            do_action('zs_print_pet_card');
+
+        endwhile;
+
+        $GLOBALS['wp_query']->max_num_pages = $query->max_num_pages;
+        the_posts_pagination( array( 'mid_size' => 1, 'prev_text' => __( 'Previous page', 'zoospas' ), 'next_text' => __( 'Next page', 'zoospas' ), 'screen_reader_text' => __( 'Posts navigation' ) ) );
+
+    } else {
+        echo '<h2>'. __('Not Found', 'zoospas') .'</h2>';
+    }
+    wp_reset_query();
+
+}

@@ -175,3 +175,17 @@ function zs_admin_edit_post($settings = null){
     }
 }
 add_action('zs_admin_edit_post', 'zs_admin_edit_post');
+
+
+
+/**
+ * Meta key alias
+ */
+function zs_get_meta_key_alias(){
+    return [
+        '_zs_age'=> __('Age', 'zoospas'),
+        '_zs_sex'=> __('Sex', 'zoospas'),
+        '_zs_size'=> __('Size', 'zoospas'),
+        '_zs_pet_type'=> __('Type of pets', 'zoospas'),
+    ];
+}
