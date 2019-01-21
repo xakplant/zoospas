@@ -191,7 +191,6 @@ function zs_print_pets_list_of_type_action($attr, $content = null){
 }
 add_action('zs_pets_list', 'zs_print_pets_list_of_type', 10, 1);
 function zs_print_pets_list_of_type($type){
-    $type = $attr['type'];
     $calc = get_option( 'posts_per_page' );
     $paged = $GLOBALS['wp_query']->query_vars['paged'];
     if($paged){

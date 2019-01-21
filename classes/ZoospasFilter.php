@@ -59,15 +59,17 @@ class ZoospasFilter
 
         $array = self::zs_get_arr_metadata();
 
+        /**
+         * front-pages/events.php
+         */
+        do_action('zs_filter_wrap_start', 'data-type="zs_ajaz_form"');
 
 
-        /* TODO переписать как событие. Эту обёртку нужно сделать изменяемой */
-        // echo '<div class="zs_filter_block"><form data-type="zs_ajaz_form">';
-        echo '<div class="choice_wp flex" data-type="zs_ajaz_form">';
-        /* TODO переписать как событие. Эту обёртку нужно сделать изменяемой для каждого инпута*/
+
         foreach ($array as $key=>$value){
-            echo '<div class="choice_block"><div class="choice_select">';
-            //echo '<div data-type="zs_filter"><label>' . __(substr($key, 4), 'zoospas') . '</label><br>';
+
+            do_action('zs_filter_select_wrap_start', $key);
+
             echo '<select name="'. $key .'" data-value="' .$key. '">';
 
             foreach ($value as $val){
@@ -76,7 +78,10 @@ class ZoospasFilter
 
             }
 
-            echo '</select></div></div>';
+            echo '</select>';
+
+
+            do_action('zs_filter_select_wrap_end');
 
 
 
@@ -84,13 +89,10 @@ class ZoospasFilter
         }
 
 
-        echo '<div class="choice_block cb_mob">';
-        echo '<a data-type="zs_ajax_btn" class="button button_h1 choice_btn btn-zs-default">Найти</a>';
-        echo '</div>';
-        echo '</div>';
-        // echo '<button type="submit" data-type="zs_ajax_btn" class="btn-zs-default">' . __('Select', 'zoospas'). '</button>';
-        /* TODO переписать как событие. Эту обёртку нужно сделать изменяемой */
-        // echo '</form></div>';
+        do_action('zs_filter_print_button', 'data-type="zs_ajax_btn"');
+
+
+        do_action('zs_filter_wrap_end');
 
     }
 
