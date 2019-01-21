@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Zoospas project for Hakaton\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-21 01:40+0000\n"
+"PO-Revision-Date: 2019-01-21 01:41+0000\n"
+"Last-Translator: anitdv <web@799000.ru>\n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-5.0.3"
+
+#: classes/ZoospasForm.php:74
+msgid "Add Email"
+msgstr ""
+
+#: classes/ZoospasForm.php:75
+msgid "Add Phone"
+msgstr ""
+
+#: classes/Zoospas.php:46
+msgid "Admin Panel"
+msgstr ""
+
+#: admin-pages/fieldset.php:22 front-pages/functions.php:186
+msgid "Age"
+msgstr ""
+
+#. Author of the plugin
+msgid "ANIT"
+msgstr ""
+
+#: classes/Zoospas.php:182
+msgid "Button class"
+msgstr ""
+
+#: classes/Zoospas.php:186
+msgid "Button html id"
+msgstr ""
+
+#: classes/Zoospas.php:190
+msgid "Button link"
+msgstr ""
+
+#: classes/Zoospas.php:177
+msgid "Button text"
+msgstr ""
+
+#: front-pages/functions.php:168 front-pages/functions.php:172
+msgid "Edit"
+msgstr ""
+
+#: shortcodes/functions.php:102
+msgid "Email"
+msgstr ""
+
+#: classes/Zoospas.php:152
+msgid "Email for form"
+msgstr ""
+
+#: classes/ZoospasForm.php:64
+msgid "Email not send"
+msgstr ""
+
+#: classes/ZoospasForm.php:62
+msgid "Email send"
+msgstr ""
+
+#: classes/Zoospas.php:172
+msgid "Form html class"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://799000.ru/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://web.799000.ru/"
+msgstr ""
+
+#: classes/Zoospas.php:195
+msgid "JS"
+msgstr ""
+
+#: classes/Zoospas.php:101
+msgid "Left button class"
+msgstr ""
+
+#: classes/Zoospas.php:109
+msgid "Left button html id"
+msgstr ""
+
+#: classes/Zoospas.php:105
+msgid "Left button link"
+msgstr ""
+
+#: classes/Zoospas.php:97
+msgid "Left button text"
+msgstr ""
+
+#: shortcodes/functions.php:178 shortcodes/functions.php:228
+msgid "Next page"
+msgstr ""
+
+#: shortcodes/functions.php:185 shortcodes/functions.php:231
+#: classes/ZoospasFilter.php:252
+msgid "Not Found"
+msgstr ""
+
+#: shortcodes/functions.php:103
+msgid "Phone number"
+msgstr ""
+
+#: shortcodes/functions.php:178 shortcodes/functions.php:228
+msgid "Previous page"
+msgstr ""
+
+#: admin-pages/fieldset.php:31
+msgid "Put pet age"
+msgstr ""
+
+#: admin-pages/fieldset.php:79
+msgid "Put pet sex"
+msgstr ""
+
+#: admin-pages/fieldset.php:211
+msgid "Put pet size"
+msgstr ""
+
+#: admin-pages/fieldset.php:146
+msgid "Put pet type"
+msgstr ""
+
+#: classes/Zoospas.php:119
+msgid "Right button class"
+msgstr ""
+
+#: classes/Zoospas.php:127
+msgid "Right button html id"
+msgstr ""
+
+#: classes/Zoospas.php:123
+msgid "Right button link"
+msgstr ""
+
+#: classes/Zoospas.php:115
+msgid "Right button text"
+msgstr ""
+
+#: front-pages/events.php:24
+msgid "Select"
+msgstr ""
+
+#: classes/ZoospasForm.php:77
+msgid "send"
+msgstr ""
+
+#: admin-pages/fieldset.php:69 front-pages/functions.php:187
+msgid "Sex"
+msgstr ""
+
+#: admin-pages/fieldset.php:202 front-pages/functions.php:188
+msgid "Size"
+msgstr ""
+
+#: classes/Zoospas.php:47
+msgid "Support"
+msgstr ""
+
+#: admin-pages/fieldset.php:135 classes/Zoospas.php:156
+msgid "Type"
+msgstr ""
+
+#: front-pages/functions.php:189
+msgid "Type of pets"
+msgstr ""
+
+#: classes/Zoospas.php:40
+msgid "Zoospas"
+msgstr ""
+
+#. Name of the plugin
+msgid "Zoospas project for Hakaton"
+msgstr ""
+
+#: classes/Zoospas.php:92
+msgid "Настройки формы обратной связи"
+msgstr ""
+
+#: classes/Zoospas.php:91
+msgid "Настройки целевых кнопок"
+msgstr ""
+
+#. Description of the plugin
+msgid "Плагин создан при поддержке Теплицы социальных технологий."
+msgstr ""

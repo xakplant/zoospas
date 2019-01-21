@@ -13,39 +13,6 @@
  * zs_general_content_of_pages_after_content - print data on all pages after general contents this pages
  *
  */
-add_action('zs_admin_panel', 'zs_admin_panel', 10);
-add_action('zs_pet_list', 'zs_pet_list', 10);
-
-function zs_pet_list(){
-
-}
-
-
-function zs_admin_panel(){
-
-    echo '<h2>Настройки</h2>';
-
-    ?>
-
-    <form name="zs_options" method="post">
-        <label>Почта для уведомлений</label>
-        <input type="email" name="zs_email" value="zoospas27@mail.ru"/><br>
-        <br><br>
-        <label>Оснавная категория по которой плагин будет понимать что запись о животном</label>
-        <input type="text" name="zs_pr_category" value="pet"/><br>
-        <label>Категория с типом животного (например, кошки или cat</label>
-        <input type="text" name="zs_pr_second_0" value="cat"/><br>
-        <label>Категория с типом животного (например, собаки или dog</label>
-        <input type="text" name="zs_pr_second_1" value="dog"/><br>
-        <label>Категория с типом животного (например, прочие, прички и т.д.t</label>
-        <input type="text" name="zs_pr_second_2" value="other"/><br>
-        <button type="submit">сохранить настройки</button>
-    </form>
-
-
-    <?php
-
-}
 
 
 

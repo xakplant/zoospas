@@ -41,7 +41,7 @@ class Zoospas
 
         global $submenu;
         $url = '/wp-admin/post-new.php?post_type=zs_pets';
-        $submenu['zs_admin'][] = array('Add pet', 'manage_options', $url);
+        $submenu['zs_admin'][] = array(__('Add pet', 'zoospas'), 'manage_options', $url);
 
         add_submenu_page( 'zs_admin', __( 'Admin Panel', 'zoospas' ) , __( 'Admin Panel', 'zoospas' ) ,   'manage_options', 'zs_admin', array( __CLASS__, 'admin_panel' ));
         add_submenu_page( 'zs_admin', __( 'Support', 'zoospas' ) , __( 'Support', 'zoospas' ) ,   'manage_options', 'zs_support', array( __CLASS__, 'support' ));
@@ -51,8 +51,10 @@ class Zoospas
     public static function  support(){
 
         ?>
-
+        <div class="wrap">
         <h2><?php echo get_admin_page_title() ?></h2>
+        <a href="https://github.com/xakplant/zoospas" target="_blank"><?php echo __('Documentation', 'zoospas'); ?></a>
+        </div>
 
         <?php
     }

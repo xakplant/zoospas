@@ -17,19 +17,19 @@ function zoospas_register_post_types(){
     register_post_type('zs_pets', array(
         'label'  => 'Pets',
         'labels' => array(
-            'singular_name'      => _x('Pet', 'zoospas'), // название для одной записи этого типа
-            'name'               => _x('Pets', 'zoospas'), // основное название для типа записи
-            'add_new'            => _x('Add Pet', 'zoospas'), // для добавления новой записи
-            'add_new_item'       => 'Addition Pet', // заголовка у вновь создаваемой записи в админ-панели.
-            'edit_item'          => _x('Edit Pet', 'zoospas'), // для редактирования типа записи
-            'new_item'           => _x('New Pet', 'zoospas'), // текст новой записи
-            'view_item'          => 'View Pet', // для просмотра записи этого типа.
-            'search_items'       => 'Search Pet', // для поиска по этим типам записи
+            'singular_name'      => __('Pet', 'zoospas'), // название для одной записи этого типа
+            'name'               => __('Pets', 'zoospas'), // основное название для типа записи
+            'add_new'            => __('Add Pet', 'zoospas'), // для добавления новой записи
+            'add_new_item'       => __('Addition Pet', 'zoospas'), // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item'          => __('Edit Pet', 'zoospas'), // для редактирования типа записи
+            'new_item'           => __('New Pet', 'zoospas'), // текст новой записи
+            'view_item'          => __('View Pet', 'zoospas'), // для просмотра записи этого типа.
+            'search_items'       => __('Search Pet', 'zoospas'), // для поиска по этим типам записи
             // todo нормально перевести запись ниже
-            'not_found'          => 'Pets no found', // если в результате поиска ничего не было найдено
-            'not_found_in_trash' => 'Pets no found in trash', // если не было найдено в корзине
-            'parent_item_colon'  => 'Parent of Pets', // для родителей (у древовидных типов)
-            'menu_name'          => 'Pets' // название меню
+            'not_found'          => __('Pets no found', 'zoospas'), // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => __('Pets no found in trash', 'zoospas'), // если не было найдено в корзине
+            'parent_item_colon'  => __('Parent of Pets', 'zoospas'), // для родителей (у древовидных типов)
+            'menu_name'          => __('Pets', 'zoospas') // название меню
         ),
         'description'         => 'Описание записей с животными',
         'public'              => true,

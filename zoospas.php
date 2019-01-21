@@ -19,7 +19,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-load_plugin_textdomain('zs', false, basename( dirname( __FILE__ ) ) . '/languages' );
+load_plugin_textdomain('zoospas', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 define( 'ZOOSPAS_VERSION', '0.1.0' );
 define( 'ZOOSPAS_MINIMUM_WP_VERSION', '0.1' );
