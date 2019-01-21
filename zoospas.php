@@ -21,7 +21,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 
 load_plugin_textdomain('zoospas', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
-define( 'ZOOSPAS_VERSION', '0.1.0' );
+define( 'ZOOSPAS_VERSION', '1.0.0' );
 define( 'ZOOSPAS_MINIMUM_WP_VERSION', '0.1' );
 define( 'ZOOSPAS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define('ZOOSPAS_PLUGIN_URL', plugin_dir_url(__FILE__));

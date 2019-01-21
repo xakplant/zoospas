@@ -34,7 +34,7 @@ function zs_print_pet_card(){
 }
 
 add_action('zs_print_pet_card', 'zs_print_pet_card', 10);
-
+add_shortcode('zs_print_pet_card', 'zs_print_pet_card');
 
 function zs_card_wraper_start(){
     echo '<div class="zs_card">';
@@ -104,9 +104,7 @@ function zs_card_meta(){
     $output = ob_get_contents();
 
     ob_end_clean();
-    /**
-    * TODO переписать оболочки как событие
-    */
+
     echo '<table '.$output.'>';
     echo '<tbody>';
 

@@ -68,7 +68,7 @@ class ZoospasForm
         $form .= '<input type="hidden" name="action" value="' . $action . '">';
         $form .= '<select name="subject" id="subject ">';
         foreach ($subjects as $subject){
-            $form .= '<option>' . $subject . '</option>';
+            $form .= '<option>' . __($subject, 'zoospas') . '</option>';
         }
         $form .= '</select>';
         $form .= '<input type="email" name="email" placeholder="' . __('Add Email', 'zoospas') . '"/>';

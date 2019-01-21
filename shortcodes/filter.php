@@ -5,9 +5,8 @@
  * Date: 10.09.2018
  * Time: 11:21
  */
-//todo переписать название шорткода
 add_shortcode('zs_print_filter', 'zs_print_filter_n_results');
-
+add_action('zs_print_filter', 'zs_print_filter_n_results');
 function zs_print_filter_n_results(){
 
 

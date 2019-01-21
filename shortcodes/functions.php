@@ -68,7 +68,6 @@ function zs_print_button_right(){
 add_shortcode('zs_form', 'zs_recall_form');
 function zs_recall_form(){
 
-    $type = ZoospasVars::$options['form']['type'];
     new ZoospasForm();
     wp_enqueue_style('zoospas_style_front');
     ob_start();
@@ -77,6 +76,14 @@ function zs_recall_form(){
     ob_end_clean();
     return $output;
 }
+add_action('zs_form', 'zs_recall_form_action');
+function zs_recall_form_action(){
+    new ZoospasForm();
+    wp_enqueue_style('zoospas_style_front');
+    echo ZoospasForm::get_value();
+}
+
+
 add_action( 'admin_post_zoospas_form', 'zoospas_form_action' );
 add_action( 'admin_post_nopriv_zoospas_form', 'zoospas_form_action' );
 function zoospas_form_action(){

@@ -88,10 +88,10 @@ function zs_sex_meta_box_callback( $post, $meta ){
     foreach ($arr_sex as $sex){
 
         if($sex ===  get_post_meta( $post->ID, '_zs_sex',true )){
-            echo '<option selected>'. __($sex, 'zoospas') .'</option>';
+            echo '<option selected value="'. $sex .'">'. __($sex, 'zoospas') .'</option>';
         }
         else {
-            echo '<option>'. __($sex, 'zoospas') .'</option>';
+            echo '<option value="'. $sex .'">'. __($sex, 'zoospas') .'</option>';
         }
 
     }
@@ -155,10 +155,10 @@ function zs_pet_type_meta_box_callback( $post, $meta ){
     foreach ($arr_pet_type as $pet_type){
 
         if($pet_type ===  get_post_meta( $post->ID, '_zs_pet_type',true )){
-            echo '<option selected>'. __($pet_type, 'zoospas') .'</option>';
+            echo '<option selected value="' . $pet_type . '">'. __($pet_type, 'zoospas') .'</option>';
         }
         else {
-            echo '<option>'. __($pet_type, 'zoospas') .'</option>';
+            echo '<option value="' . $pet_type . '">'. __($pet_type, 'zoospas') .'</option>';
         }
 
     }

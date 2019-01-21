@@ -25,7 +25,6 @@ function zoospas_register_post_types(){
             'new_item'           => __('New Pet', 'zoospas'), // текст новой записи
             'view_item'          => __('View Pet', 'zoospas'), // для просмотра записи этого типа.
             'search_items'       => __('Search Pet', 'zoospas'), // для поиска по этим типам записи
-            // todo нормально перевести запись ниже
             'not_found'          => __('Pets no found', 'zoospas'), // если в результате поиска ничего не было найдено
             'not_found_in_trash' => __('Pets no found in trash', 'zoospas'), // если не было найдено в корзине
             'parent_item_colon'  => __('Parent of Pets', 'zoospas'), // для родителей (у древовидных типов)

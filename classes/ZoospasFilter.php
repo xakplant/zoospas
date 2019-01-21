@@ -9,7 +9,6 @@
 class ZoospasFilter
 {
 
-    //TODO переписать как фабрику
 
     public static function zs_get_meta_key(){
 
@@ -25,7 +24,7 @@ class ZoospasFilter
 
     }
 
-    private static function zs_get_arr_metadata(){
+    public static function zs_get_arr_metadata(){
 
 
         $arWhere = self::zs_get_meta_key();
@@ -48,9 +47,6 @@ class ZoospasFilter
 
         return $column;
 
-/*        echo '<pre>';
-        print_r($column);
-        echo '</pre>';*/
 
     }
 
@@ -74,7 +70,7 @@ class ZoospasFilter
 
             foreach ($value as $val){
 
-                echo '<option>'. $val .'</option>';
+                echo '<option value="'. $val .'">'. __($val, 'zoospas') .'</option>';
 
             }
 

@@ -87,9 +87,6 @@ class Zoospas
 
     public static function zs_options(){
 
-        /**
-         * TODO перевести на английский
-         */
         add_settings_section('zs_option_group', __('Настройки целевых кнопок', 'zoospas'), 'zs_display_options_group', 'zs_options');
         add_settings_section('zs_option_group2', __('Настройки формы обратной связи', 'zoospas'), 'zs_display_options_group', 'zs_options_two');
         /**
@@ -163,7 +160,7 @@ class Zoospas
 
             <select id="zs_right_button_html_id" name="zs_form_type">
                 <?php foreach ($type as $t):?>
-                    <option <?php echo ($t == $value) ? 'selected' : ''; ?> ><?php echo __($t, 'zoospas'); ?></option>
+                    <option value="<?php echo $t ?>" <?php echo ($t == $value) ? 'selected' : ''; ?> ><?php echo __($t, 'zoospas'); ?></option>
                 <?php endforeach; ?>
             </select>
 
@@ -196,7 +193,7 @@ class Zoospas
 
         add_settings_field('zs_form_btn_js', __('JS', 'zoospas'), function (){
             echo '<textarea name="zs_form_btn_js" id="zs_form_btn_js">' . get_option('zs_form_btn_js') . '</textarea>';
-        }, 'zs_options', 'zs_option_group2');
+        }, 'zs_options_two', 'zs_option_group2');
 
         register_setting('zs_option_group2', 'zs_form_email');
         register_setting('zs_option_group2', 'zs_form_type');
