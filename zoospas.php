@@ -3,7 +3,7 @@
  * @package Zoospas
  */
 /*
-Plugin Name: Zoospas project for Hakaton
+Plugin Name: Zoospas
 Plugin URI: https://web.799000.ru/
 Description: Доска объявлений бездомных животных .Плагин создан при поддержке <a href="https://te-st.ru">Теплицы социальных технологий</a>.
 Version: 0.1.0

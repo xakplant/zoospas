@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Zoospas ===
 Contributors: borischerepanov
 Tags: zoospas, pets
 Requires at least: 4.9.0
