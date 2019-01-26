@@ -1,14 +1,14 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Zoospas project for Hakaton\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 04:18+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"POT-Creation-Date: 2019-01-26 03:13+0000\n"
+"PO-Revision-Date: 2019-01-26 03:14+0000\n"
+"Last-Translator: anitdv <web@799000.ru>\n"
+"Language-Team: Русский\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,261 +17,252 @@ msgstr ""
 
 #: admin-pages/functions.php:20
 msgid "Pet"
-msgstr ""
+msgstr "Животное"
 
 #: admin-pages/functions.php:21 admin-pages/functions.php:32
 msgid "Pets"
-msgstr ""
+msgstr "Животные"
 
 #: admin-pages/functions.php:22
 msgid "Add Pet"
-msgstr ""
+msgstr "Добавить животное"
 
 #: admin-pages/functions.php:23
 msgid "Addition Pet"
-msgstr ""
+msgstr "Добавенное животное"
 
 #: admin-pages/functions.php:24
 msgid "Edit Pet"
-msgstr ""
+msgstr "Редактировать животное"
 
 #: admin-pages/functions.php:25
 msgid "New Pet"
-msgstr ""
+msgstr "Новое животное"
 
 #: admin-pages/functions.php:26
 msgid "View Pet"
-msgstr ""
+msgstr "Посмотреть животное"
 
 #: admin-pages/functions.php:27
 msgid "Search Pet"
-msgstr ""
+msgstr "Найти животное"
 
 #: admin-pages/functions.php:29
 msgid "Pets no found"
-msgstr ""
+msgstr "Животные не найдены"
 
 #: admin-pages/functions.php:30
 msgid "Pets no found in trash"
-msgstr ""
+msgstr "Карточка животного не найдено в корзине"
 
 #: admin-pages/functions.php:31
 msgid "Parent of Pets"
-msgstr ""
+msgstr "Родитель животного"
 
 #: admin-pages/fieldset.php:22 front-pages/functions.php:186
 msgid "Age"
-msgstr ""
+msgstr "Возраст"
 
 #: admin-pages/fieldset.php:31
 msgid "Put pet age"
-msgstr ""
+msgstr "Введите возраст животного"
 
 #: admin-pages/fieldset.php:69 front-pages/functions.php:187
 msgid "Sex"
-msgstr ""
+msgstr "Пол"
 
 #: admin-pages/fieldset.php:79
 msgid "Put pet sex"
-msgstr ""
+msgstr "Введите пол животного"
 
 #: admin-pages/fieldset.php:135 classes/Zoospas.php:158
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: admin-pages/fieldset.php:146
 msgid "Put pet type"
-msgstr ""
+msgstr "Введите тип животного"
 
 #: admin-pages/fieldset.php:202 front-pages/functions.php:188
 msgid "Size"
-msgstr ""
+msgstr "Размер"
 
 #: admin-pages/fieldset.php:211
 msgid "Put pet size"
-msgstr ""
+msgstr "Введите размер животного"
 
 #: shortcodes/functions.php:102
 msgid "Email"
-msgstr ""
+msgstr "Электронная почта"
 
 #: shortcodes/functions.php:103
 msgid "Phone number"
-msgstr ""
+msgstr "Телефонный номер"
 
 #: shortcodes/functions.php:178 shortcodes/functions.php:228
 msgid "Previous page"
-msgstr ""
+msgstr "Предыдущая страница"
 
 #: shortcodes/functions.php:178 shortcodes/functions.php:228
 msgid "Next page"
-msgstr ""
+msgstr "следующая страница"
 
 #: shortcodes/functions.php:185 shortcodes/functions.php:231
 #: classes/ZoospasFilter.php:252
 msgid "Not Found"
-msgstr ""
+msgstr "Нет результатов"
 
 #: classes/Zoospas.php:40
 msgid "Zoospas"
-msgstr ""
+msgstr "Зооспас"
 
 #: classes/Zoospas.php:44
 msgid "Add pet"
-msgstr ""
+msgstr "Добавить животное"
 
 #: classes/Zoospas.php:46
 msgid "Admin Panel"
-msgstr ""
+msgstr "Настройки"
 
 #: classes/Zoospas.php:47
 msgid "Support"
-msgstr ""
+msgstr "Поддержка"
 
 #: classes/Zoospas.php:56
 msgid "Documentation"
-msgstr ""
+msgstr "Документация"
 
 #: classes/Zoospas.php:93
 msgid "Настройки целевых кнопок"
-msgstr ""
+msgstr "Настройки целевых кнопок"
 
 #: classes/Zoospas.php:94
 msgid "Настройки формы обратной связи"
-msgstr ""
+msgstr "Настройки формы обратной связи"
 
 #: classes/Zoospas.php:99
 msgid "Left button text"
-msgstr ""
+msgstr "текст первой кнопки"
 
 #: classes/Zoospas.php:103
 msgid "Left button class"
-msgstr ""
+msgstr "Класс первой кнопки"
 
 #: classes/Zoospas.php:107
 msgid "Left button link"
-msgstr ""
+msgstr "ссылка первой кнопки"
 
 #: classes/Zoospas.php:111
 msgid "Left button html id"
-msgstr ""
+msgstr "id первой кнопки"
 
 #: classes/Zoospas.php:117
 msgid "Right button text"
-msgstr ""
+msgstr "Текст второй кнопки"
 
 #: classes/Zoospas.php:121
 msgid "Right button class"
-msgstr ""
+msgstr "Класс второй кнопки"
 
 #: classes/Zoospas.php:125
 msgid "Right button link"
-msgstr ""
+msgstr "Ссылка второй кнопки"
 
 #: classes/Zoospas.php:129
 msgid "Right button html id"
-msgstr ""
+msgstr "html id второй кнопки"
 
 #: classes/Zoospas.php:154
 msgid "Email for form"
-msgstr ""
+msgstr "Электронная почта для формы"
 
 #: classes/Zoospas.php:174
 msgid "Form html class"
-msgstr ""
+msgstr "Класс (css) формы"
 
 #: classes/Zoospas.php:179
 msgid "Button text"
-msgstr ""
+msgstr "Текст кнопки"
 
 #: classes/Zoospas.php:184
 msgid "Button class"
-msgstr ""
+msgstr "Класс кнопки"
 
 #: classes/Zoospas.php:188
 msgid "Button html id"
-msgstr ""
+msgstr "html id кнопки"
 
 #: classes/Zoospas.php:192
 msgid "Button link"
-msgstr ""
+msgstr "Ссылка"
 
 #: classes/Zoospas.php:197
 msgid "JS"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes/ZoospasForm.php:62
 msgid "Email send"
-msgstr ""
+msgstr "Письмо отправлено"
 
 #: classes/ZoospasForm.php:64
 msgid "Email not send"
-msgstr ""
+msgstr "Письмо не отправлено"
 
 #: classes/ZoospasForm.php:74
 msgid "Add Email"
-msgstr ""
+msgstr "Введите электронную почту"
 
 #: classes/ZoospasForm.php:75
 msgid "Add Phone"
-msgstr ""
+msgstr "Введите телефон"
 
 #: classes/ZoospasForm.php:77
 msgid "send"
-msgstr ""
+msgstr "отправить"
 
 #: front-pages/functions.php:168 front-pages/functions.php:172
 msgid "Edit"
-msgstr ""
+msgstr "Редактировать"
 
 #: front-pages/functions.php:189
 msgid "Type of pets"
-msgstr ""
+msgstr "Тип животнго"
 
 #: front-pages/events.php:24
 msgid "Select"
-msgstr ""
+msgstr "Выбрать"
 
 #. Name of the plugin
 msgid "Zoospas project for Hakaton"
-msgstr ""
+msgstr "Зооспас - проект для хакатона"
 
 #. Description of the plugin
 msgid "Плагин создан при поддержке Теплицы социальных технологий."
-msgstr ""
+msgstr "Плагин создан при поддержке Теплицы социальных технологий."
 
 #. URI of the plugin
 msgid "https://web.799000.ru/"
-msgstr ""
+msgstr "https://web.799000.ru/"
 
 #. Author of the plugin
 msgid "ANIT"
-msgstr ""
+msgstr "АНИТ"
 
 #. Author URI of the plugin
 msgid "https://799000.ru/"
-msgstr ""
+msgstr "https://799000.ru/"
 
 msgid "Cat"
-msgstr ""
+msgstr "Кот"
 
 msgid "Dog"
-msgstr ""
+msgstr "Собака"
 
 msgid "Other"
-msgstr ""
+msgstr "Другие"
 
 msgid "Male"
-msgstr ""
+msgstr "Мужской"
 
 msgid "Famale"
-msgstr ""
-
-msgid "Shelter the animal"
-msgstr ""
-
-msgid "Financial help"
-msgstr ""
-
-msgid "Volunteer"
-msgstr ""
+msgstr "Женский"

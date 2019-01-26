@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zoospas project for Hakaton\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-26 04:18+0000\n"
+"POT-Creation-Date: 2019-01-26 03:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -265,13 +265,4 @@ msgid "Male"
 msgstr ""
 
 msgid "Famale"
-msgstr ""
-
-msgid "Shelter the animal"
-msgstr ""
-
-msgid "Financial help"
-msgstr ""
-
-msgid "Volunteer"
 msgstr ""

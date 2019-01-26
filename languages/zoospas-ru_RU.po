@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Zoospas project for Hakaton\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-21 02:04+0000\n"
-"PO-Revision-Date: 2019-01-21 02:05+0000\n"
+"POT-Creation-Date: 2019-01-26 04:18+0000\n"
+"PO-Revision-Date: 2019-01-26 04:19+0000\n"
 "Last-Translator: anitdv <web@799000.ru>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -251,3 +251,27 @@ msgstr "АНИТ"
 #. Author URI of the plugin
 msgid "https://799000.ru/"
 msgstr "https://799000.ru/"
+
+msgid "Cat"
+msgstr "Кот"
+
+msgid "Dog"
+msgstr "Собака"
+
+msgid "Other"
+msgstr "Другие"
+
+msgid "Male"
+msgstr "Мужской"
+
+msgid "Famale"
+msgstr "Женский"
+
+msgid "Shelter the animal"
+msgstr "Приютить животное"
+
+msgid "Financial help"
+msgstr "Финансовая помощь"
+
+msgid "Volunteer"
+msgstr "Волонтёрство"
