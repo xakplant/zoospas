@@ -12,8 +12,8 @@ Here is a short description of the plugin.  This should be no more than 150 char
  
 == Description ==
  
-Plugin for keeping records of animals and demonstration of their site visitors
- 
+The ZooSpas plugin allows you to display animal cards with the option to use filters to sort and select animals for adoption.
+
 == Installation ==
  
 This section describes how to install the plugin and get it working.
@@ -21,8 +21,8 @@ This section describes how to install the plugin and get it working.
 e.g.
  
 1. Upload plugin to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `&amp;lt;?php do_action('plugin_name_hook'); ?&amp;gt;` in your templates
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Place `&amp;lt;?php do_action('plugin_name_hook'); ?&amp;gt;` in your templates
  
 == Frequently Asked Questions ==
  
