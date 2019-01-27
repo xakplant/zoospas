@@ -13,6 +13,8 @@ Here is a short description of the plugin.  This should be no more than 150 char
 == Description ==
  
 The ZooSpas plugin allows you to display animal cards with the option to use filters to sort and select animals for adoption.
+You can keep and display animal records in the best for visitors way. Additional features are settings for two CTA buttons and
+feedback form.
 
 == Installation ==
  
