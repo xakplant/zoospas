@@ -8,12 +8,44 @@ Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: 
  
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+The ZooSpas plugin allows you to display animal cards with the option to use filters to sort and select animals for adoption.
  
 == Description ==
  
-Plugin for keeping records of animals and demonstration of their site visitors
+The ZooSpas plugin allows you to display animal cards with the option to use filters to sort and select animals for adoption. You can keep and display animal records in the best for visitors way. Additional features are settings for two CTA buttons and feedback form.
  
+Задача плагина – облегчить посетителям сайта поиск и выбор животных, которых можно забрать из приюта. Администратор сайта может вывести и настроить две универсальные кнопки с целевыми действиями.
+
+В плагине предусмотрена форма обратной связи с различными типами отображения, благодаря чему она превращается в универсальный инструмент общения с пользователями и получения обратной связи.
+
+Плагин легко устанавливается и требует минимум настроек.
+
+Плагин предназначен для всех, кто занимается помощью и пристройством бездомных животных — некоммерческие организации, общественные объединения, физические лица.
+
+### Основные функции
+
+* Создание и вывод на страницы карточки животного
+* Выбор из трёх типов карточек: кошки, собаки, другие животные
+* Поиск животных через фильтр
+* Стилизация фильтров
+* Две универсальные кнопки целевых действий
+* Форма обратной связи с различными типами отображения
+
+https://www.youtube.com/watch?v=yAGbEjIJM3c
+
+https://www.youtube.com/watch?v=Yeq2c1IrVq0
+
+https://www.youtube.com/watch?v=ceTLckx287Q
+
+https://www.youtube.com/watch?v=aRTIauNyoB0
+
+### Основные функции
+
+* Добавить сообщение об ошибке или предложение по улучшению на [GitHub](https://github.com/xakplant/zoospas).
+* Поделиться улучшениями кода, послав нам Pull Request.
+* Сделать перевод плагина или оптимизировать его для вашей страны.
+
+
 == Installation ==
  
 This section describes how to install the plugin and get it working.
