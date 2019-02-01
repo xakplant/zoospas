@@ -164,9 +164,6 @@ function zs_admin_edit_post($settings = null){
             echo 'href="/wp-admin/post.php?post='. get_the_ID() .'&amp;action=edit">'.__('Edit', 'zoospas') .'</a>';;
         }
         else {
-
-            echo '<a href="/wp-admin/post.php?post='. get_the_ID() .'&amp;action=edit">'.__('Edit', 'zoospas') .'</a>';
-
         }
     }
 }
