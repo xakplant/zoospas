@@ -1,10 +1,10 @@
 ﻿=== Zoospas ===
-Contributors: borischerepanov
+Contributors: borischerepanov, teplosup
 Tags: zoospas, pets
 Requires at least: 4.9.0
-Tested up to: 5.0.3
-Requires PHP: 7.2
-Stable tag: 0.1.0
+Tested up to: 5.2.0
+Requires PHP: 5.6
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: 
  
@@ -71,3 +71,15 @@ https://www.youtube.com/watch?v=aRTIauNyoB0
  
  == Frequently Asked Questions ==
 [Docs](https://github.com/xakplant/zoospas)
+
+= General Settings =
+https://www.youtube.com/watch?v=yAGbEjIJM3c
+
+= Button Styling =
+https://www.youtube.com/watch?v=Yeq2c1IrVq0
+
+= Filter Styling =
+https://www.youtube.com/watch?v=ceTLckx287Q
+
+= Page Templates =
+https://www.youtube.com/watch?v=aRTIauNyoB0

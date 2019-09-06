@@ -225,7 +225,8 @@ class ZoospasFilter
         $query = new WP_Query($argmts);
 
         if($query->have_posts()){
-
+            
+            ob_start();
             while ( $query->have_posts() ) :
                 $query->the_post();
 
@@ -237,7 +238,8 @@ class ZoospasFilter
 
 
             endwhile;
-
+            
+            echo zs_wrap_cards_list(ob_get_clean());
 
         }
         else {

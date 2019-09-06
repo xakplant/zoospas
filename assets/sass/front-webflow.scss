@@ -1,0 +1,11 @@
+// Styles for zoospas frontend
+
+.zoospas_container {
+    color: #1a2333;
+    font-size: 16px;
+    line-height: 24px;
+  
+    @import 'normalize';
+    @import 'webflow';
+    @import 'zoospas.webflow';
+}

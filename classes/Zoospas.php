@@ -10,10 +10,8 @@ class Zoospas
 
 
     public static function init(){
-
-
         require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/functions.php' );
-
+        flush_rewrite_rules();
     }
 
 
