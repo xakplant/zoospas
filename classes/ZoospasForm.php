@@ -61,19 +61,40 @@ class ZoospasForm
         } elseif ($_GET['zs_mail_responce'] == 'false'){
             echo '<p class="zs_nail_responce_box false">'. __('Email not send', 'zoospas') . '</p>';
         }
+        
+        $form .= '<div class="zs__filter__wrapper zs__contact__wrapper"><div class="s__filter"><div class="s_container"><div class="filter zs-contact-form">';
 
         $form .= '<form class="' . $form_class . '" action="' . esc_url( admin_url('admin-post.php') ) . '" method="post">';
         $form .= '<input type="hidden" name="action" value="' . $action . '">';
-        $form .= '<select name="subject" id="subject ">';
+        $form .= '<select class="" style="display: none;" name="subject" id="subject ">';
         foreach ($subjects as $subject){
             $form .= '<option>' . __($subject, 'zoospas') . '</option>';
         }
         $form .= '</select>';
-        $form .= '<input type="email" name="email" placeholder="' . __('Add Email', 'zoospas') . '"/>';
-        $form .= '<input type="tel" name="tel" required placeholder="' . __('Add Phone', 'zoospas') . '" />';
+        
+        ob_start();
+        ?>
+          <div data-delay="0" class="filter_drop w-dropdown">
+            <div class="dropdown-toggle w-dropdown-toggle">
+              <div class="icon w-icon-dropdown-toggle"></div>
+              <div class="filter__placehoder-current"><?php esc_html_e($subjects[0], 'zoospas');?></div>
+            </div>
+            <nav class="dropdown-list w-dropdown-list">
+              <?php foreach ($subjects as $subject){?>
+              <a href="#" class="filter__placehoder w-dropdown-link" data-value="<?php echo __($subject, 'zoospas');?>"><?php echo __($subject, 'zoospas');?></a>
+              <?php }?>
+            </nav>
+          </div>
+        <?php 
+        $form .= str_replace(array("\r","\n"),'', ob_get_clean());
+        
+        $form .= '<input class="w-input" type="email" name="email" placeholder="' . __('Add Email', 'zoospas') . '"/>';
+        $form .= '<input class="w-input" type="tel" name="tel" required placeholder="' . __('Add Phone', 'zoospas') . '" />';
 
-        $form .= '<button class="' . $class_btn . '" type="submit">'. __('send', 'zoospas') .'</button>';
+        $form .= '<div class=""><button class="btn_primary w-button ' . $class_btn . '" type="submit">'. __('send', 'zoospas') .'</button></div>';
         $form .= '</form>';
+        
+        $form .= '</div></div></div></div>';
 
         return $form;
     }
@@ -85,7 +106,7 @@ class ZoospasForm
 
         $modal = '';
 
-        $modal .= '<a  class="' . $class . '" id="' . $id . '">' . $text . '</a>';
+        $modal .= '<a href="javascript:void(0);" class="' . $class . '" id="' . $id . '">' . $text . '</a>';
 
         return $modal;
 

@@ -16,9 +16,10 @@ function zoospas_front_register_css_js() {
     
     wp_register_style('zoospas_style_front', ZOOSPAS_PLUGIN_URL . 'assets/css/front.css', array(), ZOOSPAS_FRONTEND_VERSION);
     wp_register_style('zoospas_style_front_webflow_design', ZOOSPAS_PLUGIN_URL . 'assets/css/front-webflow.css', array(), ZOOSPAS_FRONTEND_VERSION);
-    wp_register_script('zoospas_front', ZOOSPAS_PLUGIN_URL . 'assets/js/front.js', array(), ZOOSPAS_FRONTEND_VERSION, true);
-    wp_register_script('zoospas_modal', ZOOSPAS_PLUGIN_URL . 'assets/js/modal.js', array(), ZOOSPAS_FRONTEND_VERSION, true);
+    wp_register_script('zoospas_front', ZOOSPAS_PLUGIN_URL . 'assets/js/front.js', array('jquery'), ZOOSPAS_FRONTEND_VERSION, true);
+    wp_register_script('zoospas_modal', ZOOSPAS_PLUGIN_URL . 'assets/js/modal.js', array('zoospas_front'), ZOOSPAS_FRONTEND_VERSION, true);
     wp_register_script('zoospas_handle', ZOOSPAS_PLUGIN_URL . 'assets/js/empty.js', array(), ZOOSPAS_FRONTEND_VERSION, true);
+    //wp_register_script('zoospas_webflow', ZOOSPAS_PLUGIN_URL . 'assets/js/webflow.js', array('jquery'), ZOOSPAS_FRONTEND_VERSION, true);
     
 }
 add_action( 'wp_enqueue_scripts', 'zoospas_front_register_css_js' );
@@ -28,6 +29,7 @@ function zoospas_enqueue_front(){
     wp_enqueue_style('zoospas_style_front');
     wp_enqueue_style('zoospas_style_front_webflow_design');
     wp_enqueue_script('zoospas_front');
+    //wp_enqueue_script('zoospas_webflow');
     
 }
 add_action('zoospas_enqueue', 'zoospas_enqueue_front');
@@ -43,3 +45,16 @@ function zoospas_handle_script(){
     wp_enqueue_script('zoospas_handle');
 }
 add_action( 'wp_enqueue_scripts', 'zoospas_handle_script' );
+
+function zoospas_inline_styles_for_teplitsa_plugins() {
+    ?>
+    <style>
+        :root {
+            --zoospas-color-main:  #18b6cd;
+            --zoospas-main-dark:   #00c4e0;
+            --zoospas-main-light:  #d1f4fa;
+        }
+    </style>
+    <?php 
+}
+add_action('wp_head', 'zoospas_inline_styles_for_teplitsa_plugins', 11);

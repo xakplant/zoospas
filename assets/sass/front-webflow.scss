@@ -1,6 +1,16 @@
 // Styles for zoospas frontend
 
-.zoospas_container {
+@font-face {
+  font-family: 'webflow-icons';
+  src: url("data:application/x-font-ttf;charset=utf-8;base64,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") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.entry .entry-content .zoospas_container,
+.entry .entry-content .zs__filter__wrapper,
+.zoospas_container,
+.zs__filter__wrapper {
     color: #1a2333;
     font-size: 16px;
     line-height: 24px;
@@ -8,4 +18,177 @@
     @import 'normalize';
     @import 'webflow';
     @import 'zoospas.webflow';
+}
+
+// cards
+body[class*=" plot-"][class*=" logomod-"] {
+    .the-content a.card__title {
+        border-bottom-color: transparent;
+        &:hover {
+        }
+    }
+    
+    .the-content a.card__like {
+        border-bottom-color: transparent;
+    }
+}
+
+// pagination
+.zoospas_container {
+    .navigation.pagination {
+        flex-basis: 100%;
+        margin-top: 28px;
+        margin-bottom: 32px;
+        padding-left: 12px;
+        
+        .nav-links {
+        }
+        
+        .page-numbers {
+            &:first-child {
+                margin-left: 0px;            
+            }
+        }
+        
+        a.page-numbers:not(.prev):not(.next),
+        span.page-numbers {
+            color: #7585A3;
+            border: 1px solid #BFC8D9;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 37px;
+            border-radius: 40px;
+            vertical-align: middle;
+            text-align: center;
+            margin-left: 16px;
+            padding: 0;
+            text-decoration: none;
+            
+            &.current,
+            &:hover {
+                color: var(--zoospas-color-main);
+                border: 1px solid var(--zoospas-main-light);
+                background-color: var(--zoospas-main-light);
+            }
+        }
+        
+        .page-numbers.prev,
+        .page-numbers.next {
+            text-indent: -9999px;
+            display: inline-block;
+            width: 20px;
+            height: 28px;
+            border-bottom: none;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+        
+        .page-numbers.prev {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xNS44MzMzIDkuMTY2NTdINS45NUw4Ljk3NSA1LjUzMzI0QzkuMTE2NDUgNS4zNjMwNiA5LjE4NDUgNS4xNDM2NiA5LjE2NDE5IDQuOTIzM0M5LjE0Mzg3IDQuNzAyOTUgOS4wMzY4NSA0LjQ5OTY5IDguODY2NjcgNC4zNTgyNEM4LjY5NjQ5IDQuMjE2NzkgOC40NzcwOSA0LjE0ODc0IDguMjU2NzMgNC4xNjkwNUM4LjAzNjM4IDQuMTg5MzcgNy44MzMxMiA0LjI5NjM5IDcuNjkxNjcgNC40NjY1N0wzLjUyNSA5LjQ2NjU3QzMuNDk2OTcgOS41MDYzNCAzLjQ3MTkgOS41NDgxMiAzLjQ1IDkuNTkxNTdDMy40NSA5LjYzMzI0IDMuNDUgOS42NTgyNCAzLjM5MTY3IDkuNjk5OUMzLjM1MzkgOS43OTU0NSAzLjMzNDEyIDkuODk3MTYgMy4zMzMzNCA5Ljk5OTlDMy4zMzQxMiAxMC4xMDI2IDMuMzUzOSAxMC4yMDQ0IDMuMzkxNjcgMTAuMjk5OUMzLjM5MTY3IDEwLjM0MTYgMy4zOTE2NyAxMC4zNjY2IDMuNDUgMTAuNDA4MkMzLjQ3MTkgMTAuNDUxNyAzLjQ5Njk3IDEwLjQ5MzUgMy41MjUgMTAuNTMzMkw3LjY5MTY3IDE1LjUzMzJDNy43NzAwMiAxNS42MjczIDcuODY4MTQgMTUuNzAzIDcuOTc5MDQgMTUuNzU0OEM4LjA4OTk0IDE1LjgwNjcgOC4yMTA5MSAxNS44MzM0IDguMzMzMzQgMTUuODMzMkM4LjUyODA1IDE1LjgzMzYgOC43MTY3NCAxNS43NjU4IDguODY2NjcgMTUuNjQxNkM4Ljk1MTA1IDE1LjU3MTYgOS4wMjA4IDE1LjQ4NTcgOS4wNzE5MyAxNS4zODg3QzkuMTIzMDYgMTUuMjkxOCA5LjE1NDU1IDE1LjE4NTcgOS4xNjQ2MiAxNS4wNzY1QzkuMTc0NjggMTQuOTY3NCA5LjE2MzExIDE0Ljg1NzMgOS4xMzA1NyAxNC43NTI3QzkuMDk4MDQgMTQuNjQ4IDkuMDQ1MTcgMTQuNTUwOCA4Ljk3NSAxNC40NjY2TDUuOTUgMTAuODMzMkgxNS44MzMzQzE2LjA1NDMgMTAuODMzMiAxNi4yNjYzIDEwLjc0NTQgMTYuNDIyNiAxMC41ODkyQzE2LjU3ODkgMTAuNDMyOSAxNi42NjY3IDEwLjIyMDkgMTYuNjY2NyA5Ljk5OTlDMTYuNjY2NyA5Ljc3ODg5IDE2LjU3ODkgOS41NjY5MyAxNi40MjI2IDkuNDEwNjVDMTYuMjY2MyA5LjI1NDM3IDE2LjA1NDMgOS4xNjY1NyAxNS44MzMzIDkuMTY2NTdaIiBmaWxsPSIjNzU4NUEzIi8+DQo8L3N2Zz4NCg==");
+        }
+        
+        .page-numbers.next {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik00LjE2NjY2IDkuMTY2NTdIMTQuMDVMMTEuMDI1IDUuNTMzMjRDMTAuODgzNSA1LjM2MzA2IDEwLjgxNTUgNS4xNDM2NiAxMC44MzU4IDQuOTIzM0MxMC44NTYxIDQuNzAyOTUgMTAuOTYzMSA0LjQ5OTY5IDExLjEzMzMgNC4zNTgyNEMxMS4zMDM1IDQuMjE2NzkgMTEuNTIyOSA0LjE0ODc0IDExLjc0MzMgNC4xNjkwNUMxMS45NjM2IDQuMTg5MzcgMTIuMTY2OSA0LjI5NjM5IDEyLjMwODMgNC40NjY1N0wxNi40NzUgOS40NjY1N0MxNi41MDMgOS41MDYzNCAxNi41MjgxIDkuNTQ4MTIgMTYuNTUgOS41OTE1N0MxNi41NSA5LjYzMzI0IDE2LjU1IDkuNjU4MjQgMTYuNjA4MyA5LjY5OTlDMTYuNjQ2MSA5Ljc5NTQ1IDE2LjY2NTkgOS44OTcxNiAxNi42NjY3IDkuOTk5OUMxNi42NjU5IDEwLjEwMjYgMTYuNjQ2MSAxMC4yMDQ0IDE2LjYwODMgMTAuMjk5OUMxNi42MDgzIDEwLjM0MTYgMTYuNjA4MyAxMC4zNjY2IDE2LjU1IDEwLjQwODJDMTYuNTI4MSAxMC40NTE3IDE2LjUwMyAxMC40OTM1IDE2LjQ3NSAxMC41MzMyTDEyLjMwODMgMTUuNTMzMkMxMi4yMyAxNS42MjczIDEyLjEzMTkgMTUuNzAzIDEyLjAyMSAxNS43NTQ4QzExLjkxMDEgMTUuODA2NyAxMS43ODkxIDE1LjgzMzQgMTEuNjY2NyAxNS44MzMyQzExLjQ3MiAxNS44MzM2IDExLjI4MzMgMTUuNzY1OCAxMS4xMzMzIDE1LjY0MTZDMTEuMDQ4OSAxNS41NzE2IDEwLjk3OTIgMTUuNDg1NyAxMC45MjgxIDE1LjM4ODdDMTAuODc2OSAxNS4yOTE4IDEwLjg0NTQgMTUuMTg1NyAxMC44MzU0IDE1LjA3NjVDMTAuODI1MyAxNC45Njc0IDEwLjgzNjkgMTQuODU3MyAxMC44Njk0IDE0Ljc1MjdDMTAuOTAyIDE0LjY0OCAxMC45NTQ4IDE0LjU1MDggMTEuMDI1IDE0LjQ2NjZMMTQuMDUgMTAuODMzMkg0LjE2NjY2QzMuOTQ1NjUgMTAuODMzMiAzLjczMzY5IDEwLjc0NTQgMy41Nzc0MSAxMC41ODkyQzMuNDIxMTIgMTAuNDMyOSAzLjMzMzMzIDEwLjIyMDkgMy4zMzMzMyA5Ljk5OTlDMy4zMzMzMyA5Ljc3ODg5IDMuNDIxMTIgOS41NjY5MyAzLjU3NzQxIDkuNDEwNjVDMy43MzM2OSA5LjI1NDM3IDMuOTQ1NjUgOS4xNjY1NyA0LjE2NjY2IDkuMTY2NTdaIiBmaWxsPSIjNzU4NUEzIi8+DQo8L3N2Zz4NCg==");
+            margin-left: 16px;            
+        }
+    }
+}
+
+// filter
+.zs__filter__wrapper .filter__container {
+    div[data-type="zs_filter"] {
+        label {
+            display: none;
+        }
+        
+        br {
+            display: none;
+        }
+        
+        select {
+            display: none;
+        }
+    }
+    
+    a.w-dropdown-link {
+        border-bottom-color: transparent;
+        box-shadow: none;
+    }
+    
+    // fix for default wp themes
+    .dropdown-toggle {
+        &.w-dropdown-toggle {
+            height: 40px;
+            top: 0px;
+        }
+        
+        &:after {
+            content: "";
+            border-left: none;
+        }
+    }
+   
+}
+
+.zs__filter__wrapper {
+    .btn-zs-default.btn_primary.w-button {
+        outline: none;
+        
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.the-content div[data-type="zs_ajax_box"] > h2 {
+    &:first-child {
+        margin-top: 32px;
+    }
+}
+
+// contact form
+.zoospas_modal_body {
+    padding: 0;
+    min-width: 320px;
+    
+    .zs-contact-form {
+        &.filter {
+            border-radius: 0;
+        }
+    }
+}
+
+.zs__contact__wrapper {
+    .s_container {
+        padding-right: 0px;
+    }
+}
+
+.zs-contact-form {
+    &.filter {
+        max-width: 320px;
+        padding: 24px;
+        
+        form {
+            width: 100%;
+        }
+        
+        .w-dropdown {
+            margin-bottom: 10px;
+        }
+        
+        input {
+            padding-right: 24px;
+            color: #525f7a;
+            font-size: 16px;
+            line-height: 24px;        
+        }
+    }
+}
+
+.the-content {
+    .w-dropdown a {
+        border-bottom: none;
+    }
 }

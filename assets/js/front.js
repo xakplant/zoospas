@@ -82,7 +82,7 @@ ZS_filter.prototype.Change = function () {
         return ZS;
 
     }
-
+    
     ZS_changeFirstObjectObject.addEventListener('change', ZS_changeFirstObjectObjectF, ZS, ZS_changeFirstObjectObject);
 
     ZS_changeLastObjectObject.addEventListener('change', ZS_changeLastObjectObjectF, ZS, ZS_changeLastObjectObject);
@@ -92,3 +92,69 @@ ZS_filter.prototype.Change = function () {
 
 }
 // var e = new ZS_filter();
+
+function zsHandleContacFormEvents($) {
+	$('.w-dropdown').on('click', function(){
+		var $customSelect = $(this);
+		var $toggle = $customSelect.find('.w-dropdown-toggle');
+		
+		if($toggle.attr('aria-expanded') == 'true') {
+			$customSelect.find('.w-dropdown-list').removeClass('w--open');		
+			$toggle.removeClass('w--open');
+			$toggle.removeAttr('aria-expanded');
+			$customSelect.css('z-index', "");
+		}
+		else {
+			$customSelect.find('.w-dropdown-list').addClass('w--open');		
+			$toggle.addClass('w--open');
+			$toggle.attr('aria-expanded', 'true');
+			$customSelect.css('z-index', "901");
+		}
+	});
+	
+	
+	$('.zs-contact-form .filter_drop.w-dropdown nav a').on('click', function(e){
+		e.preventDefault();
+		e.stopPropagation();
+		
+		var value = $(this).data('value');
+		var $filterControl = $(this).closest('.zs-contact-form');
+		var $select = $filterControl.find('select');
+		$select.val(value);
+		$select.trigger('change');
+		
+		var $customSelect = $(this).closest('.w-dropdown');
+		$customSelect.find('.filter__placehoder-current').html($(this).html());
+		
+		$(this).parent().removeClass('w--open');
+		var $toggle = $customSelect.find('.w-dropdown-toggle');
+		$toggle.removeClass('w--open');
+		$toggle.attr('aria-expanded', '');
+		$customSelect.css('z-index', "");
+	});	
+}
+
+jQuery(function($){
+	// filter
+	$('.filter__container .filter_drop.w-dropdown nav a').on('click', function(e){
+		e.preventDefault();
+		e.stopPropagation();
+		
+		var value = $(this).data('value');
+		var $filterControl = $(this).closest('.filter__container');
+		var $select = $filterControl.find('select');
+		$select.val(value);
+		$select.trigger('change');
+		
+		var $customSelect = $(this).closest('.w-dropdown');
+		$customSelect.find('.filter__placehoder-current').html($(this).html());
+		
+		$(this).parent().removeClass('w--open');
+		var $toggle = $customSelect.find('.w-dropdown-toggle');
+		$toggle.removeClass('w--open');
+		$toggle.attr('aria-expanded', '');
+		$customSelect.css('z-index', "");
+	});
+	
+	zsHandleContacFormEvents($);
+});

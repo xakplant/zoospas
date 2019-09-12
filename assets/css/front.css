@@ -1,13 +1,6 @@
 .zs_filter_block{
     display: block;
 }
-.zs_filter_block > form > div {
-    display: inline-block;
-    width: 30%;
-    padding-left: 15px;
-    padding-right: 15px;
-    box-sizing: border-box;
-}
 .zs_card{
 }
 .zs_card img{

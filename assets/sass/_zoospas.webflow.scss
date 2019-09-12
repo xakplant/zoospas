@@ -9,7 +9,7 @@
   margin-right: auto;
   margin-left: auto;
   padding-right: 16px;
-  padding-left: 16px;
+  //padding-left: 16px;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
@@ -27,7 +27,7 @@
   height: 208px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #18b6cd;
+  background-color: var(--zoospas-color-main);
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -88,13 +88,8 @@
     }
 }
 
-a.card__title {
-    &:hover {
-    }
-}
-
 .card__title:hover {
-  color: #18b6cd;
+  color: var(--zoospas-color-main);
 }
 
 .card__title.big h2 {
@@ -131,7 +126,7 @@ a.card__title {
   width: 100%;
   min-width: 120px;
   padding: 8px 16px;
-  background-color: #18b6cd;
+  background-color: var(--zoospas-color-main);
   box-shadow: inset 0 -2px 0 0 rgba(0, 56, 64, 0.16);
   -webkit-transition: border 350ms ease, background-color 350ms ease;
   transition: border 350ms ease, background-color 350ms ease;
@@ -148,7 +143,7 @@ a.btn_primary {
 }
 
 .btn_primary:hover {
-  background-color: #00c4e0;
+  background-color: var(--zoospas-main-dark);
   box-shadow: none;
   color: white;
 }
@@ -192,11 +187,11 @@ a.btn_primary {
 .btn_secondary {
   width: 100%;
   padding: 8px 16px;
-  border: 1px solid #d1f4fa;
+  border: 1px solid var(--zoospas-main-light);
   background-color: #fff;
   -webkit-transition: background-color 350ms ease;
   transition: background-color 350ms ease;
-  color: #18b6cd;
+  color: var(--zoospas-color-main);
   font-size: 16px;
   line-height: 24px;
   text-align: center;
@@ -211,9 +206,9 @@ a.btn_secondary {
 }
 
 .btn_secondary:hover {
-  border-color: #d1f4fa;
+  border-color: var(--zoospas-main-light);
   background-color: #e1fbff;
-  color: #18b6cd;
+  color: var(--zoospas-color-main);
   box-shadow: none;
   text-decoration: none;
 }
@@ -239,10 +234,10 @@ a.btn_secondary {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 40px;
-  background-color: #d1f4fa;
+  background-color: var(--zoospas-main-light);
   -webkit-transition: background-color 350ms ease;
   transition: background-color 350ms ease;
-  color: #18b6cd;
+  color: var(--zoospas-color-main);
   
   box-shadow: none;
   &:hover {
@@ -250,13 +245,13 @@ a.btn_secondary {
 }
 
 .card__like:hover {
-  color: #18b6cd;
+  color: var(--zoospas-color-main);
   background-color: #fff;
-  box-shadow: 0 0 8px 0 #d1f4fa;
+  box-shadow: 0 0 8px 0 var(--zoospas-main-light);
 }
 
 .card__like.marked {
-  background-color: #18b6cd;
+  background-color: var(--zoospas-color-main);
   color: #fff;
 }
 
@@ -306,8 +301,8 @@ a.btn_secondary {
 }
 
 .s__filter {
-  padding-top: 72px;
-  padding-bottom: 16px;
+  //padding-top: 72px;
+  //padding-bottom: 16px;
 }
 
 .s__table {
@@ -526,21 +521,21 @@ a.btn_secondary {
   -ms-flex-align: center;
   align-items: center;
   border-radius: 40px;
-  background-color: #d1f4fa;
+  background-color: var(--zoospas-main-light);
   -webkit-transition: background-color 350ms ease;
   transition: background-color 350ms ease;
-  color: #18b6cd;
+  color: var(--zoospas-color-main);
   box-shadow: none;
 }
 
 .card__like-big:hover {
-  color: #18b6cd;
+  color: var(--zoospas-color-main);
   background-color: #fff;
-  box-shadow: 0 0 8px 0 #d1f4fa;
+  box-shadow: 0 0 8px 0 var(--zoospas-main-light);
 }
 
 .card__like-big.marked {
-  background-color: #18b6cd;
+  background-color: var(--zoospas-color-main);
   color: #fff;
 }
 

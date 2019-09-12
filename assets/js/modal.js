@@ -104,7 +104,8 @@ XMC.prototype.initTarget = function () {
         if(this.classListBody){
             this.setClasses(this.classListBody, this.body);
         }
-
+        
+        zsHandleContacFormEvents(jQuery);
     }
     this.body.style.display = 'flex';
     return this;

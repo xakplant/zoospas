@@ -51,16 +51,26 @@ class ZoospasFilter
 
 
         $array = self::zs_get_arr_metadata();
-
+        
+?>
+<div class="zs__filter__wrapper">
+<?php         
         /**
          * front-pages/events.php
          */
         do_action('zs_filter_wrap_start', 'data-type="zs_ajaz_form"');
 
 
+        ?>
+  <div class="s__filter">
+    <div class="s_container">
+      <div class="filter">
+                
+        <?php
 
+        
         foreach ($array as $key=>$value){
-
+            
             do_action('zs_filter_select_wrap_start', $key);
 
             echo '<select name="'. $key .'" data-value="' .$key. '">';
@@ -72,21 +82,40 @@ class ZoospasFilter
             }
 
             echo '</select>';
-
+            
+            ?>
+              <div data-delay="0" class="filter_drop w-dropdown">
+                <div class="dropdown-toggle w-dropdown-toggle">
+                  <div class="icon w-icon-dropdown-toggle"></div>
+                  <div class="filter__placehoder-current"><?php esc_html_e($value[0], 'zoospas');?></div>
+                </div>
+                <nav class="dropdown-list w-dropdown-list">
+                  <?php foreach ($value as $val){?>
+                  <a href="#" class="filter__placehoder w-dropdown-link" data-value="<?php echo $val;?>"><?php esc_html_e($val, 'zoospas');?></a>
+                  <?php }?>
+                </nav>
+              </div>
+            <?php 
 
             do_action('zs_filter_select_wrap_end');
 
 
-
-
         }
-
 
         do_action('zs_filter_print_button', 'data-type="zs_ajax_btn"');
 
-
+        ?>
+        </div>
+      </div>
+    </div>
+        <?php 
+        
         do_action('zs_filter_wrap_end');
+?>
 
+</div>
+
+<?php 
     }
 
     public static function zs_print_result_box(){
