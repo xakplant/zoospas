@@ -6,7 +6,7 @@
 Plugin Name: Zoospas
 Plugin URI: https://web.799000.ru/
 Description: Доска объявлений бездомных животных .Плагин создан при поддержке <a href="https://te-st.ru">Теплицы социальных технологий</a>.
-Version: 0.1.2
+Version: 0.1.3
 Author: ANIT
 Author URI: https://799000.ru/
 License: GPLv2 or later
