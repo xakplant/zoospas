@@ -6,7 +6,7 @@
 Plugin Name: Zoospas
 Plugin URI: https://web.799000.ru/
 Description: Доска объявлений бездомных животных .Плагин создан при поддержке <a href="https://te-st.ru">Теплицы социальных технологий</a>.
-Version: 0.1.0
+Version: 0.1.3
 Author: ANIT
 Author URI: https://799000.ru/
 License: GPLv2 or later
@@ -24,7 +24,8 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 
 load_plugin_textdomain('zoospas', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
-define( 'ZOOSPAS_VERSION', '1.0.0' );
+define( 'ZOOSPAS_VERSION', '0.1.2' );
+define( 'ZOOSPAS_FRONTEND_VERSION', WP_DEBUG ? date("YmdHis") . rand() : '2.4' );
 define( 'ZOOSPAS_MINIMUM_WP_VERSION', '0.1' );
 define( 'ZOOSPAS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define('ZOOSPAS_PLUGIN_URL', plugin_dir_url(__FILE__));
@@ -39,6 +40,7 @@ require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/functions.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/admin-pages/events.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/front-pages/functions.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/front-pages/events.php' );
+require_once ( ZOOSPAS_PLUGIN_DIR . '/front-pages/events-single-page.php' );
 require_once ( ZOOSPAS_PLUGIN_DIR . '/assets/functions.php' );
 
 
@@ -62,3 +64,5 @@ register_uninstall_hook(__FILE__, array('Zoospas', 'plugin_uninstall'));
 
 add_action('admin_menu', array( 'Zoospas', 'menu_item' ));
 add_action('admin_menu', array( 'Zoospas', 'zs_options' ));
+
+__('Pet type', 'zoospas');

@@ -1,22 +1,9 @@
 .zs_filter_block{
     display: block;
 }
-.zs_filter_block > form > div {
-    display: inline-block;
-    width: 30%;
-    padding-left: 15px;
-    padding-right: 15px;
-    box-sizing: border-box;
-}
 .zs_card{
-    display: block;
-    border: solid 1px #e0e0e0;
-    margin: 10px 0;
 }
 .zs_card img{
-    max-width:100%;
-    margin-bottom: 10px;
-    margin-top: 10px;
 }
 
 /* Slide */
@@ -82,4 +69,20 @@
 }
 .zs_nail_responce_box.true {
     background-color: #1caf9a;
+}
+.zoospas_meta_box_w_tumb, .zoospas_meta_box_w_tumb *{
+    border: none;
+}
+.zoospas_meta_box_w_tumb * {
+    padding: 0 !important;
+}
+.zoospas_p_table th{
+    text-align: left;
+}
+.zoospas_p_table > tr:first-child {
+    max-width: 30%;
+}
+.zoospas_container {
+    max-width: 1200px;
+    margin: 0 auto;
 }

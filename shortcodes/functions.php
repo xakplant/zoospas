@@ -9,6 +9,25 @@ require_once ( ZOOSPAS_PLUGIN_DIR . '/shortcodes/filter.php' );
 function zs_get_button_action($text, $class, $url, $id){
     return '<a class="' . $class . '" href="'. $url .'" id="' . $id . '">'. $text .'</a>';
 }
+function zs_wrap_cards_list($cards_list_html){
+    ob_start();
+    ?>
+	<div class="zoospas_container">
+		<div class="s__table">
+        	<div class="s_container">
+            	<div class="cards__container">
+            		<?php echo $cards_list_html;?>
+            	</div>
+        	</div>
+    	</div>
+	</div>    
+    <?php
+    return ob_get_clean();
+}
+function zs_remove_buttons_shortcodes($content) {
+    $pattern = get_shortcode_regex(array('zs_button_left', 'zs_button_right'));
+    return preg_replace_callback( "/$pattern/", 'strip_shortcode_tag', $content );
+}
 add_action('zs_button_left', 'zs_print_button_left_action');
 function zs_print_button_left_action(){
     $zs_options = ZoospasVars::$options;
@@ -16,6 +35,7 @@ function zs_print_button_left_action(){
     $class = $zs_options['buttons']['left']['class'];
     $url = $zs_options['buttons']['left']['url'];
     $html_id = $zs_options['buttons']['left']['html_id'];
+    $class = "btn_primary w-button " . $class;
 
     echo zs_get_button_action($text, $class, $url, $html_id);
 }
@@ -27,6 +47,7 @@ function zs_print_button_left(){
     $class = $zs_options['buttons']['left']['class'];
     $url = $zs_options['buttons']['left']['url'];
     $html_id = $zs_options['buttons']['left']['html_id'];
+    $class = "btn_primary w-button " . $class;
 
     ob_start();
     echo zs_get_button_action($text, $class, $url, $html_id);
@@ -41,6 +62,7 @@ function zs_print_button_right_action(){
     $class = $zs_options['buttons']['right']['class'];
     $url = $zs_options['buttons']['right']['url'];
     $html_id = $zs_options['buttons']['right']['html_id'];
+    $class = "btn_secondary w-button " . $class;
 
     echo zs_get_button_action($text, $class, $url, $html_id);
 }
@@ -51,6 +73,7 @@ function zs_print_button_right(){
     $class = $zs_options['buttons']['right']['class'];
     $url = $zs_options['buttons']['right']['url'];
     $html_id = $zs_options['buttons']['right']['html_id'];
+    $class = "btn_secondary w-button " . $class;
 
     ob_start();
     echo zs_get_button_action($text, $class, $url, $html_id);
@@ -168,6 +191,8 @@ function zs_print_pets_list_of_type_action($attr, $content = null){
 
 
     if($query->have_posts()){
+        do_action('zoospas_enqueue');
+        
         ob_start();
         while ( $query->have_posts() ) :
             $query->the_post();
@@ -182,9 +207,8 @@ function zs_print_pets_list_of_type_action($attr, $content = null){
         $GLOBALS['wp_query']->max_num_pages = $query->max_num_pages;
         the_posts_pagination( array( 'mid_size' => 1, 'prev_text' => __( 'Previous page', 'zoospas' ), 'next_text' => __( 'Next page', 'zoospas' ), 'screen_reader_text' => __( 'Posts navigation' ) ) );
 
-
         wp_reset_query();
-        return ob_get_clean();
+        return zs_wrap_cards_list(ob_get_clean());
     } else {
         ob_start();
         echo '<h2>'. __('Not Found', 'zoospas') .'</h2>';
@@ -218,6 +242,9 @@ function zs_print_pets_list_of_type($type){
     ];
     $query = new WP_Query($argmts);
     if($query->have_posts()){
+        do_action('zoospas_enqueue');
+        
+        ob_start();
         while ( $query->have_posts() ) :
             $query->the_post();
 
@@ -231,6 +258,8 @@ function zs_print_pets_list_of_type($type){
 
         $GLOBALS['wp_query']->max_num_pages = $query->max_num_pages;
         the_posts_pagination( array( 'mid_size' => 1, 'prev_text' => __( 'Previous page', 'zoospas' ), 'next_text' => __( 'Next page', 'zoospas' ), 'screen_reader_text' => __( 'Posts navigation' ) ) );
+        
+        echo zs_wrap_cards_list(ob_get_clean());
 
     } else {
         echo '<h2>'. __('Not Found', 'zoospas') .'</h2>';
